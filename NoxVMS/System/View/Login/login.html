@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+	<head>
+    	<title>{$GLOBALS['sitename']}</title>
+		<meta charset="UTF-8">
+        <meta nmae="robots" content="noindex,nofollow">
+        <link rel="stylesheet" type="text/css" href='__PUBLIC__/default/css/public.css' />
+        <link rel="shortcut icon" href='__PUBLIC__/default/images/favicon.ico' />
+        <link rel="stylesheet" type="text/css" href='__PUBLIC__/default/css/login.css' />
+	</head>
+	<body>
+		<div class='Login'>
+        	<div class='Login_Title'><p>{$GLOBALS['sitename']}</p></div>
+            <div class='Login_Con'>
+                <label>账号</label>
+                <input class='text' placeholder="请输入登录账号" type='text' name='username' />
+                <label>密码</label>
+                <input class='text' placeholder="请输入密码" onKeyUp="KeyDown(event)" type='password' name='password' />
+                <label></label>
+                <input class='submit' onKeyDown="login()" onClick="login()" type='button' value='登录' />
+                <input class='submit2' type='button' value='登录中···' />
+            </div>
+        </div>
+	</body>
+    <script type="text/javascript" src='__PUBLIC__/default/js/jquery-1.11.1.min.js'></script>
+    <script type="text/javascript" src='__PUBLIC__/SCWindow/SCWindow.min.js'></script>
+    <script type="text/javascript" src='__PUBLIC__/default/js/public.js'></script>
+    <script type="text/javascript" src='__PUBLIC__/default/js/login.js'></script>
+</html>

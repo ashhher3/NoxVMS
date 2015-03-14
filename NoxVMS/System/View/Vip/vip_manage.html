@@ -1,0 +1,199 @@
+<include file='Vip/vip_menu'/> 
+		<div class='nox_main Yahei'>
+        	<div class='nm_con'>
+            	<p>
+                	<button data-toggle="modal" data-target="#AddUser" type="button" class="btn btn-success fontsize-14">
+                    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加会员
+                    </button>
+                    <button data-toggle="modal" data-target="#UploadFile" type="button" class="btn btn-success fontsize-14">
+                    	<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;&nbsp;导入Excel文件
+                    </button>
+                    <button onclick="DeleteVipCheck()" data-toggle="modal" data-target="#DeleteUser_Focus" type="button" class="btn btn-danger fontsize-14 float-right">
+                    	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;&nbsp;删除选中用户
+                    </button>
+                </p>
+                <table class="table table-bordered table-hover" style='margin-bottom:0px;'>
+                    <tr>
+                    	<td width='30'><input type="checkbox" disabled="disabled" class='disabled' value='' /></td>
+                        <td><strong>姓名</strong></td>
+                        <td><strong>出生日期</strong></td>
+                        <td><strong>联系方式</strong></td>
+                        <td><strong>联系地址</strong></td>
+                        <td><strong>服务店家</strong></td>
+                        <td width='180'><strong>操作</strong></td>
+                    </tr>
+                    <volist name='vip_list' id='vv'>
+                    <tr>
+                    	<td><input type="checkbox" value='{$vv.vid}' /></td>
+                        <td>{$vv.vname}</td>
+                        <td>{$vv.vbirth|date="Y-m-d",###}</td>
+                        <td>{$vv.vcontact_info}</td>
+                        <td>{$vv.vcontact_address}</td>
+                        <td>{$vv.vserver_owner}</td>
+                        <td>
+                            <a class='vm_a_action' onClick="ShowVipInfo('{$vv.vid}','{$vv.vname}','{:U('Vip/vip_action/action/ShowVipInfo')}')" data-toggle="modal" data-target="#UserInfo" href='#'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                 详细
+                            </a>
+                            <a class='vm_a_action' href='{:U('Vip/vip_set',array('vid'=>$vv['vid']))}'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                 修改
+                            </a>
+                            <a class='vm_a_action' onClick="DeleteVip_One('{$vv.vid}','{$vv.vname}')" data-toggle="modal" data-target="#DeleteUser_One" href='#'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                 删除
+                            </a>
+                        </td>
+                    </tr>
+                    </volist>
+                </table>
+                <ul class="pagination float-right">{$vip_show}</ul>
+            </div>
+        </div>
+        
+        <!-- 添加会员 -->
+        <div class="modal fade Yahei" id='AddUser'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">添加会员</h4>
+                    </div>
+                    <form class="form-horizontal" role="form" method="post" action="{:U('Vip/vip_action/action/add')}">
+                    <div class="modal-body">
+                        <table class='table table-bordered'>
+                        	<tr>
+                            	<td width='100'><strong>会员卡编号</strong></td>
+                                <td><input class="form-control" required="required" name='vcard' placeholder="请输入会员卡编号" type='number' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>会员姓名</strong></td>
+                                <td><input class="form-control" required="required" name='vname' placeholder="请输入会员姓名" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>出生日期</strong></td> 
+                                <td><input class="form-control" name='vbirth' onClick="WdatePicker()" placeholder="日期格式为：2012-12-12" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>联系方式</strong></td>
+                                <td><input class="form-control" name='vcontact_info' placeholder="联系方式" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>联系地址</strong></td>
+                                <td><input class="form-control" name='vcontact_address' placeholder="联系地址" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>服务店家</strong></td>
+                                <td><input class="form-control" name='vserver_owner' placeholder="服务店家" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>店家联系方式</strong></td>
+                                <td><input class="form-control" name='vserver_owner_number' placeholder="店家联系方式" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>区域经理</strong></td>
+                                <td><input class="form-control" name='varea_manager' placeholder="区域经理" type='text' /></td>
+                            </tr>
+                            <tr>
+                            	<td><strong>拥有产品</strong></td>
+                                <td class='addusercheckbox'>
+                                	<table class='table table-hover '>
+                                	<volist name='project' id='pv'>
+                                	<tr><td><input type="checkbox" name='project[]' value="{$pv.pid}"><label>{$pv.pname}</label></td></tr>
+                                    </volist>
+                                    </table>
+                                </td>
+                            </tr>
+                    	</table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 上传文件 -->
+        <div class="modal fade Yahei" id='UploadFile'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">上传文件</h4>
+                    </div>
+                    <form action="{:U('Vip/vip_action/action/Upload_file')}" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                    	<p><input type="file" name='file' /></p><br/>
+                        <p><a href='__UPLOAD__/vip/format.xlsx'>请按照标准模板上传文件，点击可下载标准模板</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 批量删除会员 -->
+        <div class="modal fade Yahei" id='DeleteUser_Focus'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<form action="{:U('Vip/vip_action/action/DeleteVip')}" method="post">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">警告：你确定要删除选中的会员？（此操作不可逆）</h4>
+                        <p class='text-right'>
+                        <button type="submit" class="btn btn-danger" style='margin-top:50px;margin-right:5px;'>Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style='margin-top:50px;'>Cancel</button>
+                    	</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 删除一位会员 -->
+        <div class="modal fade Yahei" id='DeleteUser_One'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<form action="{:U('Vip/vip_action/action/DeleteVip')}" method="post">
+                        <input type='hidden' value='' name='vid'>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">警告：你确定要删除<strong></strong>？（此操作不可逆）</h4>
+                        <p class='text-right'>
+                        <button type="submit" class="btn btn-danger" style='margin-top:50px;margin-right:5px;'>Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style='margin-top:50px;'>Cancel</button>
+                    	</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户详细信息 -->
+        <div class="modal fade Yahei" id='UserInfo'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class='table table-bordered'></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+        
+        <script src="__PUBLIC__/default/js/vip.js"></script>
+        <script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+		
+	</body>
+</html>

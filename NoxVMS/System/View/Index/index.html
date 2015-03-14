@@ -1,0 +1,56 @@
+<include file="Public/header" />		
+        <!-- 主页内容 -->
+		<div class="container Yahei" style='margin-top:20px;'>
+			<div class="row">
+				<div class="container">
+					<blockquote class="blockquote-reverse">
+						<h4 class='text-left'><strong>Vip生日提醒</strong></h4>
+						<table class="table table-hover table-bordered fontsize-14 text-left">
+							<tr>
+								<td><strong>#</strong></td>
+								<td><strong>姓名</strong></td>
+                                <td><strong>出生日期</strong></td>
+                                <td><strong>联系方式</strong></td>
+                                <td><strong>联系地址</strong></td>
+                                <td><strong>会员卡号</strong></td>
+							</tr>
+                            <volist name='U_List' id='UL_V'>
+							<tr>
+								<td>{$UL_V.vid}</td>
+								<td>{$UL_V.vname}</td>
+								<td>{$UL_V.vbirth|date="Y-m-d",###}</td>
+								<td>{$UL_V.vcontact_info}</td>
+                                <td>{$UL_V.vcontact_address}</td>
+                                <td>{$UL_V.vcard}</td>
+							</tr>
+                            </volist>
+						</table>
+                        <a href='{:U('Index/birth')}' class='btn btn-primary fontsize-14'>查看全部</a>
+					</blockquote>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default Height-280px None-Radius" >
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+							&nbsp;最近管理员登录记录
+						</div>
+						<div class="panel-body fontsize-14" >
+                        	<volist name='log' id='logv'>
+							<p>{$logv.ulogtime|date="Y-m-d H:i:s",###} {$logv.uname} 登录</p>
+                            </volist>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="panel panel-default Height-280px">
+						<div class="panel-heading"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </div>
+						<div class="panel-body">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

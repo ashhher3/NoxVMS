@@ -1,0 +1,18 @@
+/*公共样式*/
+*:focus{outline:none;}
+.Yahei{font-family:"微软雅黑"}
+.SongTi{font-family:"宋体"}
+.Height-280px{height:280px;}
+.None-Radius{border-radius:0px}
+.fontsize-14{font-size:1.4rem}
+.float-right{float:right;}
+.float-left{float:left;}
+.marginbottom-0{margin-bottom:0px;}
+
+.nox_menu{width:16%;background:#333;float:left;}
+.nox_menu li{list-style:none;float:left;height:50px;width:100%;color:#aaa;font-size:1.4rem;line-height:50px;text-align:center;cursor:pointer;}
+.nox_menu li:hover{color:#FFF}
+.nox_menu .active{background:#272727;color:#FFF}
+.nox_main{background:#FFF;float:left;width:84%}
+.nm_con{width:96%;height:92%;margin-top:2%;margin-left:2%;overflow:auto;float:left;}
+.nm_con .nm_con_bottom{height:43px;float:left;background:#ccc;width:100%;margin:0px;}

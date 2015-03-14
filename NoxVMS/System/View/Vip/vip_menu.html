@@ -1,0 +1,24 @@
+<include file='Public/header'/> 
+        <link rel="stylesheet" href="__PUBLIC__/default/css/vip.css">
+		<!-- Vip页面内容 -->
+		<div class='nox_menu Yahei'>
+            <a href='{:U('Vip/index')}'>
+            <li class='{$vip_query_active}'>
+            	<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                查询会员
+            </li>
+            </a>
+            
+            <php>if(session('user_level') <= session('Power.Vip/manage')){</php>
+            <a href="{:U('Vip/vip_manage')}">
+            <li class='{$vip_manage_active}'>
+            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                会员管理
+            </li>
+            </a>
+            <php>}</php>
+            
+		</div>
+		

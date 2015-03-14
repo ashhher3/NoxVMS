@@ -1,0 +1,14 @@
+/*vip_query*/
+.vq-form-div{width:48%;}
+.vq-btn-form{float:right;width:100%;margin-top:20px;}
+.vq-form-sub{width:200px;margin-right:15px;}
+.vq-form-loading{display:none;}
+#myModal .btn-group,#UserInfo .btn-group{margin-left:7.5px;margin-bottom:7.5px;}
+.vm_a_action{margin-left:10px;}
+
+
+/*vip_manage_set*/
+.vip_manage_set .hproject .col-md-10 label{margin-left:15px;margin-top:5px;}
+
+/*vip_manage*/
+.vip_manage .addusercheckbox label{margin-left:15px;margin-top:5px;}

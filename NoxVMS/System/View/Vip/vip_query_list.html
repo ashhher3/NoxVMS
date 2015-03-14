@@ -1,0 +1,62 @@
+<include file='Vip/vip_menu'/> 
+		<div class='nox_main Yahei'>
+        	<div class='nm_con'>
+            	<p>
+                	<a class="btn btn-primary fontsize-14" href="{:U('Vip/index')}" role="button">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 返回查询
+                    </a>
+                    <a class="btn btn-primary fontsize-14 float-right" href="{:U('Vip/vip_put_xlsx')}" role="button">
+                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 导出Excel
+                    </a>
+                </p>
+                <table class="table table-bordered table-hover" style='margin-bottom:0px;'>
+                	<tr>
+                        <td><strong>姓名</strong></td>
+                        <td><strong>出生日期</strong></td>
+                        <td><strong>联系方式</strong></td>
+                        <td><strong>联系地址</strong></td>
+                        <td><strong>服务店家</strong></td>
+                        <td width='80'><strong>操作</strong></td>
+                    </tr>
+                    <volist name='vip_list' id='lv'>
+                    <tr>
+                    	<td>{$lv.vname}</td>
+                        <td>{$lv.vbirth|date="Y-m-d",###}</td>
+                        <td>{$lv.vcontact_info}</td>
+                        <td>{$lv.vcontact_address}</td>
+                        <td>{$lv.vserver_owner}</td>
+                        <td>
+                            <a class='vm_a_action' onClick="ShowVipInfo('{$lv.vid}','{$lv.vname}','{:U('Vip/vip_action/action/ShowVipInfo')}')" data-toggle="modal" data-target="#UserInfo" href='#'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                 详细
+                            </a>
+                        </td>
+                    </tr>
+                    </volist>
+                </table>
+                <ul class="pagination float-right">{$vip_show}</ul>
+            </div>
+		</div>
+
+        <!-- 用户详细信息 -->
+        <div class="modal fade Yahei" id='UserInfo'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class='table table-bordered'></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+        
+        <script src="__PUBLIC__/default/js/vip.js"></script>
+		
+	</body>
+</html>

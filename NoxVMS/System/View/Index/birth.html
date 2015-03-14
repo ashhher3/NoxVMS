@@ -1,0 +1,35 @@
+<include file="Public/header" />		
+        <!-- 主页内容 -->
+		<div class="container Yahei" style='margin-top:20px;'>
+			<div class="row">
+				<div class="container">
+                    <h4 class='text-left'><strong>Vip生日提醒</strong></h4>
+                    <table class="table table-hover table-bordered fontsize-14 text-left">
+                        <tr>
+                            <td><strong>#</strong></td>
+                            <td><strong>姓名</strong></td>
+                            <td><strong>出生日期</strong></td>
+                            <td><strong>联系方式</strong></td>
+                            <td><strong>联系地址</strong></td>
+                            <td><strong>会员卡号</strong></td>
+                            <td><strong>服务店家</strong></td>
+                        </tr>
+                        <volist name='U_List' id='UL_V'>
+                        <tr>
+                            <td>{$UL_V.vid}</td>
+                            <td>{$UL_V.vname}</td>
+                            <td>{$UL_V.vbirth|date="Y-m-d",###}</td>
+                            <td>{$UL_V.vcontact_info}</td>
+                            <td>{$UL_V.vcontact_address}</td>
+                            <td>{$UL_V.vcard}</td>
+                            <td>{$UL_V.vserver_owner}</td>
+                        </tr>
+                        </volist>
+                    </table>
+                    <ul class="pagination float-right">{$show}</ul>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

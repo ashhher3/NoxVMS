@@ -1,0 +1,68 @@
+<include file='Vip/vip_menu'/> 
+		<div class='nox_main Yahei'>
+        	<div class='nm_con'>
+            	<link rel="stylesheet" href="__PUBLIC__/default/css/vip.css">
+            	<div class='container-fluid vq-form-main'>
+                    <form action='{:U('Vip/vip_query_list')}' method="post" role="form" class='form-horizontal'>
+                        <div class="form-group vq-form-div float-left">
+                            <label for="inputName3" class="col-sm-2 control-label">会员卡号</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='inputName3' name='vcard' placeholder="会员卡编号">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-right">
+                            <label for="xingming3" class="col-sm-2 control-label">会员姓名</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='xingming3' name='vname' placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-left">
+                            <label for="chushengriqi3" class="col-sm-2 control-label">出生日期</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='chushengriqi3' name='vbirth' onClick="WdatePicker()" placeholder="出生日期">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-right">
+                            <label for="lianxifangshi3" class="col-sm-2 control-label">联系方式</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='lianxifangshi3' name='vcontact_info' placeholder="联系方式">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-left">
+                            <label for="lianxidizhi3" class="col-sm-2 control-label">联系地址</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='lianxidizhi3' name='vcontact_address' placeholder="联系地址">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-right">
+                            <label for="fuwqudianjia3" class="col-sm-2 control-label">服务店家</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='fuwqudianjia3' name='vserver_owner' placeholder="服务店家">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-left">
+                            <label for="dianjialianxifangshi3" class="col-sm-2 control-label">店家号码</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='dianjialianxifangshi3' name='vserver_owner_number' placeholder="店家联系方式">
+                            </div>
+                        </div>
+                        <div class="form-group vq-form-div float-right">
+                            <label for="quyujingli3" class="col-sm-2 control-label">区域经理</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id='quyujingli3' name='varea_manager' placeholder="区域经理">
+                            </div>
+                        </div>
+                        <div class="form-group vq-btn-form text-right">
+                            <input type="submit" value='查询' class="btn btn-success vq-form-sub" />
+                        </div>
+                    </form>
+                </div>
+                <div class='vq-form-loading container-fluid text-center'>
+                	<img src='__PUBLIC__/default/images/loading.gif' />
+                </div>
+            </div>
+		</div>
+        <script src="__PUBLIC__/default/js/vip.js"></script>
+		
+	</body>
+</html>

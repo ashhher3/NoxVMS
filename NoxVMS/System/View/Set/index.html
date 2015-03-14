@@ -1,0 +1,39 @@
+<include file="Set/set_menu" />
+        <div class='nox_main'>
+        	<div class='nm_con Yahei'>
+            	<div class='container-fluid'>
+                <form class="form-horizontal" action="{:U('Set/set_action/action/index')}" method="post">
+                  <fieldset>
+                    <legend class='SongTi'>常规设置</legend>
+                    <div class="form-group">
+                      <label for="inputEmail" class="col-lg-2 control-label">网站名称</label>
+                      <div class="col-lg-10">
+                        <input name='sitename' type="text" value="{$globalInfo['sitename']}" class="form-control" id="inputEmail" placeholder="表现在登录界面、Logo、以及页面标题处">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="select" class="col-lg-2 control-label">生日提醒</label>
+                      <div class="col-lg-10">
+                        <select name='birth' class="form-control" id="select">
+                          <option <if condition="$globalInfo['birth'] eq 1">selected="selected"</if> value='1'>提前一天</option>
+                          <option <if condition="$globalInfo['birth'] eq 2">selected="selected"</if> value='2'>提前两天</option>
+                          <option <if condition="$globalInfo['birth'] eq 3">selected="selected"</if> value='3'>提前三天</option>
+                          <option <if condition="$globalInfo['birth'] eq 7">selected="selected"</if> value='7'>提前一周</option>
+                          <option <if condition="$globalInfo['birth'] eq 30">selected="selected"</if> value='30'>提前一个月</option>
+                        </select>
+                      </div>
+                    </div>
+                    <legend></legend>
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">保存修改</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+                </div>
+            </div>
+		</div>
+	</body>
+</html>
