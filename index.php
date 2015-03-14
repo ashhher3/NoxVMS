@@ -17,9 +17,6 @@ header("Content-type:text/html;charset=UTF-8");
 // 检测PHP环境
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 
-//检测安装状态
-if(file_exists('./install.php') || file_exists('./install')) header("Location:/install.php");
-
 //调试模式
 define('APP_DEBUG',True);
 
