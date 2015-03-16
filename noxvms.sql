@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `nox_global` (
 --
 
 INSERT INTO `nox_global` (`gid`, `sitename`, `birth`) VALUES
-(1, '法铂丽红卡会员系统', 3);
+(1, 'NoxVMS', 3);
 
 -- --------------------------------------------------------
 
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `nox_vip` (
 --
 
 INSERT INTO `nox_vip` (`vid`, `vcard`, `vname`, `vbirth`, `vcontact_info`, `vcontact_address`, `vserver_owner`, `vserver_owner_number`, `varea_manager`, `vproject`, `vproject_consume`, `vproject_not_consume`) VALUES
-(1, 1021443805, '袁洪杰', -312019200, 2147483647, '成都', '温江', 110, 'admin', '["1"]', 'null', '["1"]'),
-(6, 1000, '法铂丽', -28800, 10086, 'M78星云', '康宝丽', 110, NULL, '["1","2"]', '["1"]', '["2"]');
+(1, 1021443805, '用户名', -312019200, 2147483647, '成都', '温江', 110, 'admin', '["1"]', 'null', '["1"]'),
+(6, 1000, '用户名2', -28800, 10086, 'M78星云', '什么鬼', 110, NULL, '["1","2"]', '["1"]', '["2"]');
 
 --
 -- Indexes for dumped tables
