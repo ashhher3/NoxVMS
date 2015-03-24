@@ -90,13 +90,13 @@ class SetController extends CommonController
 				else $this->error_(U('Set/set_manage'),'添加失败，请检查用户是否存在');
 				break;
 			//删除一位用户
-			case 'deleteOne':
+			case 'deleteone':
 				$this->check_level('Set/manage');
 				$response=D('Users')->DeleteManage($PostData['userid']);
 				$response ? $this->success_(U('Set/set_manage')) : $this->error_(U('Set/set_manage'));
 				break;
 			//删除选中用户
-			case 'deleteCheck':
+			case 'deletecheck':
 				$this->check_level('Set/manage');
 				if(empty($PostData)) 
 				{
@@ -111,7 +111,7 @@ class SetController extends CommonController
 				}
 				break;
 			//修改用户数据
-			case 'UpdateData':
+			case 'updatedata':
 				$this->check_level('Set/manage');
 				$udata['uname']=$PostData['uname'];
 				!empty($PostData['upass']) && $udata['upass']=EnCode($PostData['upass']);

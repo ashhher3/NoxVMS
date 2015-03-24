@@ -16,7 +16,7 @@ header("Content-type:text/html;charset=UTF-8");
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('Require PHP > 5.3.0 !');
 
 //调试模式
-define('APP_DEBUG',True);
+define('APP_DEBUG',false);
 
 //定义应用目录
 define('APP_PATH','./NoxVMS/');

@@ -72,8 +72,12 @@ class VipModel extends Model
 	 */
 	public function getVipInfo($data,$page,$tot=0)
 	{
+		//$condition='1=1' 补充 SQL查询 条件
+		//防止用户没有任何输入而导致查询失败，或者用户希望一次性全部列表
 		$condition='1=1';
+		//将时间转化为时间戳
 		$vip_birth_day=strtotime($data['vbirth']);
+		//筛选条件拼接
 		!empty($data['vid']) && $condition.=" and vid={$data['vid']}";
 		!empty($data['vcard']) && $condition.=" and vcard={$data['vcard']}";
 		!empty($data['vname']) && $condition.=" and vname='{$data['vname']}'";

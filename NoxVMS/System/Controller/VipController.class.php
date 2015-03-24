@@ -130,7 +130,9 @@ class VipController extends CommonController
 	//vip_action
 	public function vip_action()
 	{
+		
 		if(!IS_POST) exit;
+		
 		$Manage_u=U('Vip/vip_manage');
 		$PostData=I('post.');
 		$VIP=D('Vip');
@@ -143,17 +145,17 @@ class VipController extends CommonController
 				$VIP->addVip($PostData) ? $this->success_($Manage_u) :  $this->error_($Manage_u);
 				break;
 			//删除
-			case 'DeleteVip':
+			case 'deletevip':
 				$this->check_level('Vip/manage');
 				$D_Count=$VIP->deleteVip($PostData['vid']);
 				$this->success_($Manage_u,"成功删除{$D_Count}位会员");
 				break;
 			//显示详细信息
-			case 'ShowVipInfo':
+			case 'showvipinfo':
 				echo $VIP->showVipInfo($PostData['v_id']);
 				break;
 			//设置会员产品
-			case 'setProSta':
+			case 'setprosta':
 				$this->check_level('Vip/manage');
 				echo $VIP->setProSta($PostData);
 				break;
@@ -162,7 +164,7 @@ class VipController extends CommonController
 				$this->check_level('Vip/manage');
 				$VIP->UpdateVip($PostData) ? $this->success_($Manage_u) : $this->error_($Manage_u);
 				break;
-			case 'Upload_file':
+			case 'upload_file':
 				$this->check_level('Vip/manage');
 				$re=$VIP->Upload_File($PostData);
 				$this->success_($Manage_u,"成功添加{$re}位会员");
