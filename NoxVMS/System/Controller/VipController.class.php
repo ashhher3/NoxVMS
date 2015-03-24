@@ -36,7 +36,7 @@ class VipController extends CommonController
 	public function vip_put_xlsx()
 	{
 		$arr[] = array(
-			array('val'=>'——法铂丽红卡会员——','align'=>'center','font-size'=>22,'colspan'=>12),
+			array('val'=>'法铂丽红卡会员','align'=>'center','font-size'=>22,'colspan'=>12),
 		);
 		$arr[] = array(
 				array('val'=>'【ID】','align'=>'center','font-size'=>13),
@@ -98,7 +98,7 @@ class VipController extends CommonController
 		));
 		$this->display();
 	}
-		
+
 	//vip_manage
 	public function vip_manage()
 	{
