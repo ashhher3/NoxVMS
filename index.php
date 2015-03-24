@@ -4,7 +4,7 @@
 // +-------------------------------------------------
 // | Support [ ThinkPHP 3.2.3 http://thinkphp.cn ]
 // +-------------------------------------------------
-// | OSC	 [ http://git.oschina.net/sbcode/NoxVMS ]
+// | Github	 [ https://github.com/nxcode/NoxVMS ]
 // +-------------------------------------------------
 // | Autor   [ Hodge.Yuan@Hotmail.com ]
 // +-------------------------------------------------
@@ -13,7 +13,7 @@
 header("Content-type:text/html;charset=UTF-8");
 
 // 检测PHP环境
-if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
+if(version_compare(PHP_VERSION,'5.3.0','<'))  die('Require PHP > 5.3.0 !');
 
 //调试模式
 define('APP_DEBUG',True);

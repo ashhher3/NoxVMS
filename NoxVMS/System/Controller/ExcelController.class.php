@@ -4,7 +4,7 @@
 // +-------------------------------------------------
 // | Support [ ThinkPHP 3.2.3 http://thinkphp.cn ]
 // +-------------------------------------------------
-// | OSC	 [ http://git.oschina.net/sbcode/NoxVMS ]
+// | Github	 [ https://github.com/nxcode/NoxVMS ]
 // +-------------------------------------------------
 // | excel导出
 // | @copyright  2012 mwg0304@163.com
