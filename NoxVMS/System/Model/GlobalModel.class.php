@@ -20,8 +20,8 @@ class GlobalModel extends Model
 {
 	/*
 	 *设置网站名称与生日提醒
-	 *param:array $data
-	 *return bool true|falsh
+	 *@param:array $data
+	 *@return bool true|falsh
 	 */
 	public function _set($data)
 	{
@@ -36,7 +36,7 @@ class GlobalModel extends Model
 	
 	/*
 	 *获取网站配置
-	 *return array 
+	 *@return array 
 	 */
 	public function _get()
 	{

@@ -49,8 +49,8 @@ function Jump($url)
 
 /*
  *弹窗并跳转
- *param:string $Message 弹窗内容
- *param:string $url 跳转地址
+ *@param:string $Message 弹窗内容
+ *@param:string $url 跳转地址
  */
 function Message($Message,$url)
 {
@@ -62,7 +62,7 @@ function Message($Message,$url)
 }
 
 /*
- *用户密码规则
+ *用户密码规则(其实没啥用)
  *@param:string $password 用户输入
  *@return string $code 
  */

@@ -20,9 +20,9 @@ class UsersModel extends Model
 {
 	/*
 	 *验证用户登录信息
-	 *param:string @username 账号
-	 *param:string @password 密码
-	 *return bool true|false
+	 *@param:string @username 账号
+	 *@param:string @password 密码
+	 *@return bool true|false
 	 */
 	public function Login($username,$password)
 	{
@@ -44,10 +44,9 @@ class UsersModel extends Model
 	
 	/*
 	 *用户修改密码
-	 *param:array $data 
-	 *return int 1 修改成功
-	 *		 int 0 修改失败
-	 *		 int 3 系统错误
+	 *@param:array $data 
+	 *@return int 1 修改成功
+	 *		  int 0 修改失败
  	 */
 	public function ChangePassword($data)
 	{
@@ -65,8 +64,8 @@ class UsersModel extends Model
 	
 	/*
 	 *添加一位新用户
-	 *param:array $data 
-	 *return bool true|false
+	 *@param:array $data 
+	 *@return bool true|false
  	 */
 	public function AddUser($data)
 	{
@@ -82,8 +81,8 @@ class UsersModel extends Model
 	
 	/*
 	 *用户列表
-	 *return array $list
-	 *		 string $show		
+	 *@return array  $list
+	 *		  string $show		
  	 */
 	public function QueryManage($page)
 	{
@@ -103,8 +102,8 @@ class UsersModel extends Model
 	
 	/*
 	 *删除用户
-	 *param:array $array 
-	 *return bool true|false	
+	 *@param:array $array 
+	 *@return bool true|false	
  	 */
 	public function DeleteManage($uid)
 	{
@@ -129,9 +128,9 @@ class UsersModel extends Model
 	
 	/*
 	 *修改用户数据
-	 *param:array $array
-	 *param:int $uid 用户ID
-	 *return bool true|false	
+	 *@param:array $array
+	 *@param:int $uid 用户ID
+	 *@return bool true|false	
 	 */
 	public function UpdateUserInfo($array,$uid)
 	{
@@ -144,7 +143,7 @@ class UsersModel extends Model
 	
 	/*
 	 *获取用户登录记录
-	 *return array
+	 *@return array
 	 */
 	public function getLog()
 	{

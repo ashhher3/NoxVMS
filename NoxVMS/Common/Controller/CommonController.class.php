@@ -39,9 +39,9 @@ class CommonController extends Controller
 	
 	/*
 	 *ThinkPHP默认跳转方式-操作成功
-	 *param:string $url 跳转地址
-	 *param:int $time 跳转延时
-	 *param:string $msg 提示信息
+	 *@param:string $url  跳转地址
+	 *@param:int 	$time 跳转延时
+	 *@param:string $msg  提示信息
 	 */ 
 	public function success_($url,$msg='',$time=1)
 	{
@@ -51,9 +51,9 @@ class CommonController extends Controller
 
 	/*
 	 *ThinkPHP默认跳转方式-操作失败
-	 *param:string $url 跳转地址
-	 *param:int $time 跳转延时
-	 *param:string $msg 提示信息
+	 *param:string  $url  跳转地址
+	 *param:int 	$time 跳转延时
+	 *param:string  $msg  提示信息
 	 */ 
 	public function error_($url,$msg='',$time=2)
 	{

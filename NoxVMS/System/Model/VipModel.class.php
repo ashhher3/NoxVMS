@@ -20,8 +20,8 @@ class VipModel extends Model
 {
 	/*
 	 *添加会员
-	 *param: array $data 
-	 *return bool
+	 *@param: array $data 
+	 *@return bool
 	 */
 	public function addVip($data)
 	{
@@ -44,8 +44,8 @@ class VipModel extends Model
 	
 	/*
 	 *删除会员
-	 *param: array|int $vid
-	 *return int $i 返回删除成功条数
+	 *@param: array|int $vid
+	 *@return int $i 返回删除成功条数
 	 */
 	public function deleteVip($vid)
 	{
@@ -67,13 +67,13 @@ class VipModel extends Model
 	/*
 	 *获取会员数据
 	 *以nox_vip表任意字段为查询条件
-	 *param: array $data
-	 *return array $vipData
+	 *@param: array $data
+	 *@return array $vipData
 	 */
 	public function getVipInfo($data,$page,$tot=0)
 	{
 		//$condition='1=1' 补充 SQL查询 条件
-		//防止用户没有任何输入而导致查询失败，或者用户希望一次性全部列表
+		//防止用户没有任何输入而导致查询失败，或者用户希望一次性全部列表...
 		$condition='1=1';
 		//将时间转化为时间戳
 		$vip_birth_day=strtotime($data['vbirth']);
@@ -136,8 +136,8 @@ class VipModel extends Model
 	
 	/*
 	 *修改会员信息
-	 *param: array $data
-	 *return bool
+	 *@param: array $data
+	 *@return bool
 	 */
 	public function UpdateVip($data)
 	{
@@ -194,8 +194,8 @@ class VipModel extends Model
 	/*
 	 *响应 Ajax用户详细信息
 	 *样式若有更改需要在此一起更改
-	 *param: int $vid
-	 *return string $ReStr;
+	 *@param: int $vid
+	 *@return string $ReStr;
 	 */
 	public function ShowVipInfo($vid)
 	{
@@ -249,8 +249,8 @@ class VipModel extends Model
 	
 	/*
 	 *变更用户产品状态
-	 *parat:$data
-	 *return 1|0
+	 *@parat:$data
+	 *@return 1|0
 	 */
 	public function setProSta($data)
 	{
@@ -307,11 +307,11 @@ class VipModel extends Model
 	/*
 	 *获取用户生日提醒列表_带分页
 	 *提醒期限由用户自定义
-	 *算法：
+	 *算法说明：
 	 *  获取会员生日月份与日期，计算时间戳时带上当前年份
 	 *	将得到的会员今年生日时间戳，与当前时间戳对比
 	 *	返回符合条件的会员
-	 *return array 
+	 *@return array 
 	 */
 	public function getBirthList($page,$count=12)
 	{
@@ -340,8 +340,8 @@ class VipModel extends Model
 	
 	/*
 	 *批量处理上传会员列表
-	 *param：$Data
-	 *return int $count
+	 *@param：$Data
+	 *@return int $count
 	 */
 	public function Upload_File($Data)
 	{
@@ -435,7 +435,6 @@ class VipModel extends Model
 			rmdir($Dir_Path);
 			return $k;
 		}
-		
 	}
 	
 }	

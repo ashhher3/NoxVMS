@@ -20,9 +20,9 @@ class ProjectModel extends Model
 {
 	/*
 	 *保存产品
-	 *param:array $data array('pname'=>,'pid'=>'','pdesc'=>'')
-	 *param:string $action 操作
-	 *return bool
+	 *@param:array $data array('pname'=>,'pid'=>'','pdesc'=>'')
+	 *@param:string $action 操作
+	 *@return bool
 	 */
 	public function savePro($data,$action)
 	{
