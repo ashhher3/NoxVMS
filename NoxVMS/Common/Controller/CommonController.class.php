@@ -17,10 +17,9 @@ use Think\Controller;
 class CommonController extends Controller
 {
 	//网页标题与用户生日提醒日期 && IP限制
-	public function __construct()
+	public function _initialize()
 	{
 		Check_IP();
-		parent::__construct();
 		$system_info=D('System/Global')->_get();
 		session('Power',C('POWER_CONTRO'));
 		$GLOBALS['birth']=$system_info['birth'];
