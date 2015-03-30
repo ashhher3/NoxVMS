@@ -4,8 +4,6 @@
 // +-------------------------------------------------
 // | Support [ ThinkPHP 3.2.3 http://thinkphp.cn ]
 // +-------------------------------------------------
-// | Github	 [ https://github.com/nxcode/NoxVMS ]
-// +-------------------------------------------------
 // | Autor   [ Hodge.Yuan@Hotmail.com ]
 // +-------------------------------------------------
 // 应用入口文件
@@ -28,5 +26,5 @@ define('__UPLOAD__','/Upload');
 define('DIR_SECURE_CONTENT','<title>Error</title><h1>Directory Listing Denied</h1>');
 
 //加载ThinkPHP框架
-require './Think/ThinkPHP.php';
+require './ThinkPHP/ThinkPHP.php';
 
