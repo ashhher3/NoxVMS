@@ -1,11 +1,11 @@
 <?php 
-// +-------------------------------------------------
+// +---------------------------------------------------------------------------
 // | NoxVMS  [ v0.1 ] 
-// +-------------------------------------------------
+// +---------------------------------------------------------------------------
 // | Support [ ThinkPHP 3.2.3 http://thinkphp.cn ]
-// +-------------------------------------------------
+// +---------------------------------------------------------------------------
 // | Autor   [ Hodge.Yuan@Hotmail.com ]
-// +-------------------------------------------------
+// +---------------------------------------------------------------------------
 
 /*
  *nox_users MODEL
@@ -18,8 +18,8 @@ class UsersModel extends Model
 {
 	/*
 	 *验证用户登录信息
-	 *@param:string @username 账号
-	 *@param:string @password 密码
+	 *@param:string $username 账号
+	 *@param:string $password 密码
 	 *@return bool true|false
 	 */
 	public function Login($username,$password)
@@ -148,5 +148,4 @@ class UsersModel extends Model
 		return $this->field('uname,ulogtime')->order('ulogtime desc')->limit(0,7)->select();
 	}
 		
-	
 }	
