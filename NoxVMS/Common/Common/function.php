@@ -60,11 +60,11 @@ function Message($Message,$url)
 }
 
 /*
- *用户密码规则(其实没啥用)
+ *用户密码规则
  *@param:string $password 用户输入
  *@return string $code 
  */
-function EnCode($password)
+function EnCrypt($password)
 {
 	$temp_str=MD5($password);
 	$temp_substr=substr($temp_str,-16);

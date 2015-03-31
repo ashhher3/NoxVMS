@@ -27,7 +27,7 @@ class UsersModel extends Model
 		$first_query=$this->field('uid')->where("uname='$username'")->find();
 		if(!$first_query['uid']) return false;
 		
-		$second_query=$this->where("uid={$first_query['uid']} and upass='".EnCode($password)."'")->find();
+		$second_query=$this->where("uid={$first_query['uid']} and upass='".EnCrypt($password)."'")->find();
 		if(!$second_query) return false;
 		
 		session('user_id',$second_query['uid']);
@@ -48,8 +48,8 @@ class UsersModel extends Model
  	 */
 	public function ChangePassword($data)
 	{
-		$old_pass=EnCode($data['old_pass']);
-		$new_pass=EnCode($data['again_pass']);
+		$old_pass=EnCrypt($data['old_pass']);
+		$new_pass=EnCrypt($data['again_pass']);
 		$userinfo['upass']=$new_pass;
 		
 		$res=$this->where("uid=".session('user_id')." and upass='$old_pass'")->save($userinfo);
@@ -68,7 +68,7 @@ class UsersModel extends Model
 	public function AddUser($data)
 	{
 		$udata['uname']=$data['uname'];
-		$udata['upass']=EnCode($data['upass']);
+		$udata['upass']=EnCrypt($data['upass']);
 		$udata['ulevel']=$data['ulevel'];
 		
 		if($this->where("uname='{$udata['uname']}'")->find()) return false;	//已存在用户名
