@@ -37,8 +37,11 @@ class LoginController extends CommonController
 		$this->begin();
 		if(IS_AJAX)
 		{
-			if(D('Users')->Login(I('post.name'),I('post.pass'))) echo 1;
-			else echo 0;
+			if(D('Users')->Login(I('post.name'),I('post.pass'))) 
+			{
+				$this->ajaxReturn(1);
+			}
+			else $this->ajaxReturn(0);
 		}
 	}
 	
@@ -50,4 +53,3 @@ class LoginController extends CommonController
 	}
 	
 }
-
