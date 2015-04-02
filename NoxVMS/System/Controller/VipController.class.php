@@ -89,7 +89,7 @@ class VipController extends CommonController
 	{
 		$this->begin('query');
 		if(I('post.')) session('condition',I('post.'));
-		$VipInfo=D('Vip')->getVipInfo(session('condition'), I('get.p') ? I('get.p') : 0);
+		$VipInfo=D('Vip')->getVipInfo(session('condition'), I('get.p',0));
 		$this->assign(array(
 			'vip_list' => $VipInfo['list'],
 			'vip_show' => $VipInfo['show'],
@@ -102,7 +102,7 @@ class VipController extends CommonController
 	{
 		$this->begin('manage');
 		$this->check_level('Vip/manage');
-		$vip_list=D('Vip')->getVipInfo('', I('get.p') ? I('get.p') : 0);
+		$vip_list=D('Vip')->getVipInfo('', I('get.p',0));
 		$this->assign(array(
 			'project'=>D('Project')->getResult(),
 			'vip_list'=>$vip_list['list'],

@@ -44,7 +44,7 @@ class SetController extends CommonController
 	{
 		$this->check_level('Set/manage');
 		$this->begin('manage');
-		$UserData=D('Users')->QueryManage(I('get.p')?I('get.p'):0);
+		$UserData=D('Users')->QueryManage(I('get.p',0));
 		$this->assign(array(
 			"user_result" => $UserData['list'],
 			"show" => $UserData['show'],

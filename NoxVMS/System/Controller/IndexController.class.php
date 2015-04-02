@@ -45,7 +45,7 @@ class IndexController extends CommonController
 	public function birth()
 	{
 		$this->begin();
-		$Result=D('Vip')->getBirthList(I('get.p')?I('get.p'):0,12);
+		$Result=D('Vip')->getBirthList(I('get.p',0),12);
 		$this->assign(array(
 			'U_List'=>$Result['UserList'],			
 			'show'=>$Result['show'],			

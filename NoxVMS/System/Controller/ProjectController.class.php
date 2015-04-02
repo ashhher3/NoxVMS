@@ -34,7 +34,7 @@ class ProjectController extends CommonController
 	public function index()
 	{
 		$this->begin();
-		$Result=D('Project')->query_pro_list(I('get.p')?I('get.p'):0);
+		$Result=D('Project')->query_pro_list(I('get.p',0));
 		$this->assign(array(
 			'pro_list' => $Result['list'],
 			'pro_show' => $Result['show'],
