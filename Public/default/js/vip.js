@@ -26,7 +26,7 @@ function ShowVipInfo(vid,vname,url)
 			{
 				$(this).find('a').html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 未消费');
 				$(this).parent().parent('.btn-group').insertBefore($('.pro_consume b'));
-				$.post('/Vip/vip_action/action/setProSta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'consume'},function(data){
+				$.post('/Vip/vip_action/action/setprosta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'consume'},function(data){
 					if(data==0) 
 					{
 						alert('操作失败');
@@ -40,7 +40,7 @@ function ShowVipInfo(vid,vname,url)
 			{
 				$(this).find('a').html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 已消费');
 				$(this).parent().parent('.btn-group').insertBefore($('.pro_not_consume b'));
-				$.post('/Vip/vip_action/action/setProSta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'not_consume'},function(data){
+				$.post('/Vip/vip_action/action/setprosta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'not_consume'},function(data){
 					if(data==0) 
 					{
 						alert('操作失败');
@@ -53,7 +53,7 @@ function ShowVipInfo(vid,vname,url)
 		//会员详细信息->将产品删除
 		$('#UserInfo .table li[name=delete]').on('click',function(){
 			$(this).parent().parent('.btn-group').remove();
-			$.post('/Vip/vip_action/action/setProSta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'delete'},function(data){
+			$.post('/Vip/vip_action/action/setprosta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'delete'},function(data){
 				if(data==0) 
 				{
 					alert('操作失败');
