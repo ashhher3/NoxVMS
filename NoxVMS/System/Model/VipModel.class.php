@@ -255,49 +255,76 @@ class VipModel extends Model
 		$pid=$data['pid'];
 		$sta=$data['sta'];
 		$vid=$data['vid'];
-		//设置为已消费
-		if($sta=='consume')
-		{		
-			$vipinfo=$this->where("vid=$vid")->find();
-			$consume=json_decode($vipinfo['vproject_consume']);
-			$not_consume=json_decode($vipinfo['vproject_not_consume']);
-			foreach($not_consume as $key=>$value) if($value==$pid) unset($not_consume[$key]);
-			$not_consume=array_values($not_consume);
-			$consume[]=$pid;
-			$Vdata['vproject_consume']=json_encode($consume);
-			$Vdata['vproject_not_consume']=json_encode($not_consume);
-			if($this->where("vid=$vid")->save($Vdata)) return 1;
-		}
-		//设置为未消费
-		else if($sta=='not_consume')
+		switch($sta)
 		{
-			$vipinfo=$this->where("vid=$vid")->find();
-			$consume=json_decode($vipinfo['vproject_consume']);
-			$not_consume=json_decode($vipinfo['vproject_not_consume']);
-			foreach($consume as $key=>$value) if($value==$pid) unset($consume[$key]);
-			$consume=array_values($consume);
-			$not_consume[]=$pid;
-			$Vdata['vproject_consume']=json_encode($consume);
-			$Vdata['vproject_not_consume']=json_encode($not_consume);
-			if($this->where("vid=$vid")->save($Vdata)) return 1;
-		}
-		//删除
-		else if($sta=='delete')
-		{
-			$vipinfo=$this->where("vid=$vid")->find();
-			$consume=json_decode($vipinfo['vproject_consume']);
-			$not_consume=json_decode($vipinfo['vproject_not_consume']);
-			$project=json_decode($vipinfo['vproject']);
-			foreach($not_consume as $key=>$value) if($value==$pid) unset($not_consume[$key]);
-			foreach($project as $key=>$value) if($value==$pid) unset($project[$key]);
-			foreach($consume as $key=>$value) if($value==$pid) unset($consume[$key]);
-			$consume=array_values($consume);
-			$project=array_values($project);
-			$not_consume=array_values($not_consume);
-			$Vdata['vproject']=json_encode($project);
-			$Vdata['vproject_consume']=json_encode($consume);
-			$Vdata['vproject_not_consume']=json_encode($not_consume);
-			if($this->where("vid=$vid")->save($Vdata)) return 1;
+			//设置为已消费
+			case 'consume':
+				$vipinfo=$this->where("vid=$vid")->find();
+			
+				$consume=json_decode($vipinfo['vproject_consume']);
+				$not_consume=json_decode($vipinfo['vproject_not_consume']);
+				
+				foreach($not_consume as $key=>$value) 
+				{
+					if($value==$pid) unset($not_consume[$key]);
+				}
+				
+				$not_consume=array_values($not_consume);
+				$consume[]=$pid;
+				
+				$Vdata['vproject_consume']=json_encode($consume);
+				$Vdata['vproject_not_consume']=json_encode($not_consume);
+				
+				if($this->where("vid=$vid")->save($Vdata)) return 1;
+				
+				break;
+			//设置为未消费	
+			case 'not_consume':
+				$vipinfo=$this->where("vid=$vid")->find();
+			
+				$consume=json_decode($vipinfo['vproject_consume']);
+				$not_consume=json_decode($vipinfo['vproject_not_consume']);
+				
+				foreach($consume as $key=>$value) 
+				{
+					if($value==$pid) unset($consume[$key]);
+				}
+				
+				$consume=array_values($consume);
+				$not_consume[]=$pid;
+				
+				$Vdata['vproject_consume']=json_encode($consume);
+				$Vdata['vproject_not_consume']=json_encode($not_consume);
+				
+				if($this->where("vid=$vid")->save($Vdata)) return 1;
+			
+				break;
+			//删除	
+			case 'delete':
+				$vipinfo=$this->where("vid=$vid")->find();
+			
+				$consume=json_decode($vipinfo['vproject_consume']);
+				$not_consume=json_decode($vipinfo['vproject_not_consume']);
+				$project=json_decode($vipinfo['vproject']);
+				
+				foreach($not_consume as $key=>$value) if($value==$pid) unset($not_consume[$key]);
+				foreach($project as $key=>$value) if($value==$pid) unset($project[$key]);
+				foreach($consume as $key=>$value) if($value==$pid) unset($consume[$key]);
+				
+				$consume=array_values($consume);
+				$project=array_values($project);
+				$not_consume=array_values($not_consume);
+				
+				$Vdata['vproject']=json_encode($project);
+				$Vdata['vproject_consume']=json_encode($consume);
+				$Vdata['vproject_not_consume']=json_encode($not_consume);
+				
+				if($this->where("vid=$vid")->save($Vdata)) return 1;
+				
+				break;
+			//break	
+			default:
+				break;
 		}
 		return 0;
 	}
