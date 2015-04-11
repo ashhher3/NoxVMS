@@ -48,7 +48,7 @@ class LoginController extends CommonController
 	//注销登录
 	public function log_out()
 	{
-		session_destroy();
+		session(null);
 		Jump(U('Login/login'));
 	}
 	

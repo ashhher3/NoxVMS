@@ -19,7 +19,7 @@ function Check_Login()
 {
 	if(!session('?user_name') || !session('?user_id') || !session('?user_level'))
 	{
-		session_destroy();
+		session(null);
 		Jump(U('Login/login'));
 	}
 }
