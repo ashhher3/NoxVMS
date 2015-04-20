@@ -36,7 +36,7 @@ class IndexController extends CommonController
 		$Result=D('Vip')->getBirthList(0,5);
 		$this->assign(array(
 			'log'=>D('Users')->getLog(),
-			'U_List'=>$Result['UserList'],			
+			'U_List'=>$Result['UserList'],
 		));
 		$this->display();
 	}
@@ -52,5 +52,5 @@ class IndexController extends CommonController
 		));
 		$this->display();
 	}
-	
+
 }

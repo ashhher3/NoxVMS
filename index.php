@@ -26,7 +26,7 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('Require PHP > 5.3.0 !');
  * 用于项目开发调试用,部署项目时请关闭调试模式
  * define('APP_DEBUG',false);
  */
-define('APP_DEBUG',false);
+define('APP_DEBUG',true);
 
 # 定义应用目录
 define('APP_PATH','./NoxVMS/');
