@@ -16,7 +16,7 @@ use Think\Controller;
 
 class CGIController extends Controller
 {
-    private $vip_card;
+    private $vip_card; 
     private $vip_info=array(
         'vcard'=>'',
     );
@@ -24,20 +24,22 @@ class CGIController extends Controller
         100=>'Error Code: 100', //参数错误
         101=>'Error Code: 101', //没有数据
     );
-
+	
+	#初始化检查来路GET参数
     public function _initialize()
     {
         I('get.card') ? $this->vip_card=I('get.card') : exit($this->Error[100]);
         $vip_info['vcard']=$this->vip_card;
     }
-
+	
+	#查询用户信息并返回json字符串
     public function show_vip_info()
     {
         //地址1：http://？？/index.php/CGI/show_vip_info?card= ？？
         //地址2：http://？？/CGI/show_vip_info/card/？？.html
         $Vip=D('Vip');
         $result=$Vip->getVipInfo(array('vcard'=>$this->vip_card),0,1);
-        if($result)
+        if($result) 
         {
            echo json_encode($result);
         }
