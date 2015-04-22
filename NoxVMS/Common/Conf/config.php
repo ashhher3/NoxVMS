@@ -47,7 +47,7 @@ return array(
 	'PAGE_NEXT' => '<span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span>',		//下一页
 	
 	//允许访问IP地址列表,空数组表示没有限制 array()、array('0.0.0.0','255.255.255.255')
-	'IP_ADDRESS'=> array('0.0.0.0'),
+	'IP_ADDRESS'=> array(),
 	
 );
 
