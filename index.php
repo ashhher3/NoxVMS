@@ -44,5 +44,5 @@ define('__UPLOAD__','/Upload');
 define('DIR_SECURE_CONTENT','<title>Error</title><h1>Directory Listing Denied</h1>');
  
 # 加载ThinkPHP
-require './Think/ThinkPHP.php';
+require './ThinkPHP/ThinkPHP.php';
 
