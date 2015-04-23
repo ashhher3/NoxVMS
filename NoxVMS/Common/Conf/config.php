@@ -18,7 +18,7 @@ return array(
 
 	//URL配置
 	'URL_CASE_INSENSITIVE' =>true,		//不区分URL大小写
-	'URL_MODEL'			   =>'2',		//URL模式
+	'URL_MODEL'			   =>2,			//URL模式
 	'DEFAULT_MODULE'	   =>'System',	//默认模块
 	'MULTI_MODULE' 		   => false, 	//关闭多模块访问
 	
