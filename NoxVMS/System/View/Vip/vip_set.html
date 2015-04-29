@@ -5,7 +5,7 @@
             	<div class='container-fluid vq-form-main'>
                 	<div class="form-group vq-form-div float-left text-center" style='width:100%;margin:0px;'>
                         <h4 class='Yahei text-left'><strong>正在编辑<font style='color:#F00'>{$VipInfo.vname}</font>的数据</strong></h4>
-                        
+                        <a href="javascript:re_vip_password('{:U('Vip/vip_action/action/re_pass',array('re_vip_pass'=>$VipInfo['vid']))}');" style="color:#09F">重置该用户密码</a>
                         <hr/>
                     </div>
                     <form action="{:U('Vip/vip_action/action/set_vip')}" method="post" role="form" class='form-horizontal'>

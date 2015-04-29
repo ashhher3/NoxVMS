@@ -83,4 +83,9 @@ function DeleteVipCheck()
 	}
 	$('#DeleteUser_Focus form').append(str);
 }
-	
+
+//重置用户密码
+function re_vip_password(url)
+{
+    SCWindow('警告','确认重置该用户密码？','B',url);
+}

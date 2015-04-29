@@ -128,7 +128,7 @@ class VipController extends CommonController
 	//vip_action
 	public function vip_action()
 	{
-		if(!IS_POST) exit;
+
 
 		$Manage_u=U('Vip/vip_manage');
 		$PostData=I('post.');
@@ -138,33 +138,45 @@ class VipController extends CommonController
 		{
 			//添加
 			case 'add':
+                if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$VIP->addVip($PostData) ? $this->success_($Manage_u) :  $this->error_($Manage_u);
 				break;
 			//删除
 			case 'DeleteVip':
+                if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$D_Count=$VIP->deleteVip($PostData['vid']);
 				$this->success_($Manage_u,"成功删除{$D_Count}位会员");
 				break;
 			//显示详细信息
 			case 'ShowVipInfo':
+                if(!IS_POST) break;
 				$this->ajaxReturn($VIP->showVipInfo($PostData['v_id']),'EVAL');
 				break;
 			//设置会员产品
 			case 'setprosta':
+                if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$this->ajaxReturn($VIP->setProSta($PostData));
 				break;
 			//设置会员信息
 			case 'set_vip':
+                if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$VIP->UpdateVip($PostData) ? $this->success_($Manage_u) : $this->error_($Manage_u);
 				break;
+            //初始化会员插查询密码
+            case 're_pass':
+                $this->check_level('Vip/manage');
+                $VIP->repass(I('get.re_vip_pass')) ? $this->success_($Manage_u) : $this->error_($Manage_u);
+                break;
 			case 'upload_file':
+                if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$re=$VIP->Upload_File($PostData);
 				$this->success_($Manage_u,"成功添加{$re}位会员");
+                break;
 			default:
 				break;
 		}

@@ -23,6 +23,7 @@ class VipModel extends Model
 	 */
 	public function addVip($data)
 	{
+        if(strlen($data['vcontact_info'])<6) return false;
 		$vdata=array(
 			'vcard'					=> $data['vcard'],
 			'vname'					=> $data['vname'],
@@ -34,6 +35,7 @@ class VipModel extends Model
 			'varea_manager'			=> $data['varea_manager'],
 			'vproject'				=> json_encode($data['project']),
 			'vproject_not_consume'	=> json_encode($data['project']),
+			'vpass'	                => EnCrypt(substr($data['vcontact_info'],-6)),
 		);
 		if($this->where("vcard={$vdata['vcard']}")->find()) return false;
 		if($this->data($vdata)->add()) return true;
@@ -461,5 +463,21 @@ class VipModel extends Model
 			return $k;
 		}
 	}
+
+    /*
+     * 初始化会员查询密码
+     * @param: int $vid
+     * @return bool
+     * */
+    public function repass($vid)
+    {
+        if($vinfo=$this->where("vid=$vid")->find())
+        {
+            $vip_number=$vinfo['vcontact_info'];
+            $vdata=array('vpass'=>EnCrypt(substr($vip_number,-6)));
+            if($this->where("vid=$vid")->save($vdata)) return true;
+        }
+        return false;
+    }
 	
 }	
