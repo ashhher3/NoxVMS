@@ -5,8 +5,9 @@
  * 用户输入卡号查询相关信息
  */
 
-//include './Include.php';
-//$con=http_get('http://fibelles.com/');
+include './Include.php';
+$con=http_get('http://fibelles.com/');
+
 include './header.php';
 ?>
 <!-- UserCenter -->
