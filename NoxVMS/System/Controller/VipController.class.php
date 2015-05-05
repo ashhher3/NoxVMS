@@ -128,8 +128,6 @@ class VipController extends CommonController
 	//vip_action
 	public function vip_action()
 	{
-
-
 		$Manage_u=U('Vip/vip_manage');
 		$PostData=I('post.');
 		$VIP=D('Vip');
@@ -166,7 +164,7 @@ class VipController extends CommonController
 				$this->check_level('Vip/manage');
 				$VIP->UpdateVip($PostData) ? $this->success_($Manage_u) : $this->error_($Manage_u);
 				break;
-            //初始化会员插查询密码
+            //初始化会员查询密码
             case 're_pass':
                 $this->check_level('Vip/manage');
                 $VIP->repass(I('get.re_vip_pass')) ? $this->success_($Manage_u) : $this->error_($Manage_u);

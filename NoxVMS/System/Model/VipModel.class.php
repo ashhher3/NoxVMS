@@ -78,21 +78,22 @@ class VipModel extends Model
 		//将时间转化为时间戳
 		$vip_birth_day=strtotime($data['vbirth']);
 		//筛选条件拼接
-		!empty($data['vid']) && $condition.=" and vid={$data['vid']}";
-		!empty($data['vcard']) && $condition.=" and vcard={$data['vcard']}";
-		!empty($data['vname']) && $condition.=" and vname='{$data['vname']}'";
-		!empty($data['vbirth']) && $condition.=" and vbirth={$vip_birth_day}";
-		!empty($data['vproject']) && $condition.=" and vproject='{$data['vproject']}'";
-		!empty($data['vcontact_info']) && $condition.=" and vcontact_info={$data['vcontact_info']}";
-		!empty($data['varea_manager']) && $condition.=" and varea_manager='{$data['varea_manager']}'";
-		!empty($data['vserver_owner']) && $condition.=" and vserver_owner='{$data['vserver_owner']}'";
-		!empty($data['vcontact_address']) && $condition.=" and vcontact_address='{$data['vcontact_address']}'";
-		!empty($data['vproject_consume']) && $condition.=" and vproject_consume='{$data['vproject_consume']}'";
-		!empty($data['vserver_owner_number']) && $condition.=" and vserver_owner_number={$data['vserver_owner_number']}";
-		!empty($data['vproject_not_consume']) && $condition.=" and vproject_not_consume='{$data['vproject_not_consume']}'";
-		
+		$data['vid'] && $condition.=" and vid={$data['vid']}";
+		$data['vcard'] && $condition.=" and vcard={$data['vcard']}";
+		$data['vname'] && $condition.=" and vname like '%{$data['vname']}%'";
+		$data['vbirth'] && $condition.=" and vbirth={$vip_birth_day}";
+		$data['vproject'] && $condition.=" and vproject='{$data['vproject']}'";
+		$data['vcontact_info'] && $condition.=" and vcontact_info={$data['vcontact_info']}";
+		$data['varea_manager'] && $condition.=" and varea_manager='{$data['varea_manager']}'";
+		$data['vserver_owner'] && $condition.=" and vserver_owner='{$data['vserver_owner']}'";
+		$data['vcontact_address'] && $condition.=" and vcontact_address='{$data['vcontact_address']}'";
+		$data['vproject_consume'] && $condition.=" and vproject_consume='{$data['vproject_consume']}'";
+		$data['vserver_owner_number'] && $condition.=" and vserver_owner_number={$data['vserver_owner_number']}";
+		$data['vproject_not_consume'] && $condition.=" and vproject_not_consume='{$data['vproject_not_consume']}'";
+
 		if($tot==1)
 		{
+            $Project=M('Project');
 			$list=$this->where("{$condition}")->select();
 			foreach($list as $key=>$value)
 			{
@@ -101,22 +102,22 @@ class VipModel extends Model
 				$vproject_not_consume=json_decode($value['vproject_not_consume']);
 				foreach($vproject as $val)
 				{
-					$res=M('Project')->where("pid=$val")->find();
-					$temp_str.=$res['pname'].",";
+					$res=$Project->where("pid=$val")->find();
+					$temp_vproject.=$res['pname'].",";
 				}
 				foreach($vproject_consume as $val1)
 				{
-					$res=M('Project')->where("pid=$val1")->find();
-					$temp_str1.=$res['pname'].",";
+					$res=$Project->where("pid=$val1")->find();
+					$temp_vproject_consume.=$res['pname'].",";
 				}
 				foreach($vproject_not_consume as $val2)
 				{
-					$res=M('Project')->where("pid=$val2")->find();
-					$temp_str2.=$res['pname'].",";
+					$res=$Project->where("pid=$val2")->find();
+					$temp_vproject_not_consume.=$res['pname'].",";
 				}
-				$list[$key]['vproject']=$temp_str;
-				$list[$key]['vproject_consume']=$temp_str1;
-				$list[$key]['vproject_not_consume']=$temp_str2;
+				$list[$key]['vproject']=$temp_vproject;
+				$list[$key]['vproject_consume']=$temp_vproject_consume;
+				$list[$key]['vproject_not_consume']=$temp_vproject_not_consume;
 			}
 			return $list;
 		}
@@ -131,7 +132,6 @@ class VipModel extends Model
 				'show'=>$Page->show(),
 			);
 		}
-		
 	}
 	
 	/*
@@ -477,6 +477,15 @@ class VipModel extends Model
             $vdata=array('vpass'=>EnCrypt(substr($vip_number,-6)));
             if($this->where("vid=$vid")->save($vdata)) return true;
         }
+        return false;
+    }
+
+    /*
+     * 验证会员身份
+     **/
+    public function vip_ver($card,$pass)
+    {
+        if($this->where("vcard='{$card}' and vpass='".EnCrypt($pass)."'")->find()) return true;
         return false;
     }
 	
