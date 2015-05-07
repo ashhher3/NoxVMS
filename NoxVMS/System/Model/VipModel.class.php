@@ -486,7 +486,7 @@ class VipModel extends Model
     public function vip_ver($card,$pass)
     {
         if($this->where("vcard='{$card}' and vpass='".EnCrypt($pass)."'")->find()) return true;
-        return false;
+		return false;
     }
 	
 }	

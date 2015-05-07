@@ -167,7 +167,7 @@ class VipController extends CommonController
             //初始化会员查询密码
             case 're_pass':
                 $this->check_level('Vip/manage');
-                $VIP->repass(I('get.re_vip_pass')) ? $this->success_($Manage_u) : $this->error_($Manage_u);
+                echo $VIP->repass(I('get.re_vip_pass')) ? $this->success_($Manage_u) : $this->error_($Manage_u);
                 break;
 			case 'upload_file':
                 if(!IS_POST) break;

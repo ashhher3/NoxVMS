@@ -8,7 +8,9 @@
 // +---------------------------------------------------------------------------
 
 /*
- *CGI-Bin Controller
+ * CGI-Bin Controller
+ * 地址1：http://{HOST}/index.php/CGI/{Controller}?card={card}&pass={pass}
+ * 地址2：http://{HOST}/CGI/{Controller}/card/{card}/pass/{pass}.html
  */
  
 namespace System\Controller;
@@ -35,11 +37,9 @@ class CGIController extends Controller
     #身份验证
     public function user_var()
     {
-        //地址1：http://{HOST}/index.php/CGI/user_var?card={card}&pass={pass}
-        //地址2：http://{HOST}/CGI/show_vip_info/card/{card}/pass/{pass}.html
         $Vip=D('Vip');
         $this->vip_pass=I('get.pass') ? I('get.pass') : false;
-        if($Vip->vip_ver($this->vip_card,$this->vip_card))
+        if($a=$Vip->vip_ver($this->vip_card,$this->vip_pass))
         {
             $this->show_vip_info();
         }
@@ -49,8 +49,6 @@ class CGIController extends Controller
 	#查询用户信息并返回json字符串
     public function show_vip_info()
     {
-        //地址1：http://{HOST}/index.php/CGI/show_vip_info?card={card}
-        //地址2：http://{HOST}/CGI/show_vip_info/card/{card}.html
         $Vip=D('Vip');
         $result=$Vip->getVipInfo(array('vcard'=>$this->vip_card),0,1);
         if($result) 
