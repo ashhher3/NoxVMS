@@ -26,7 +26,7 @@ function Style()
 	$('#WMTitle p').css({'float':'left','height':'100%','margin':'0px','padding':'0px'});
 	$('#WMTitle font').css({'float':'right','display':'block','marginRight':'20px','fontSize':'17px','cursor':'pointer','color':'#999'});
 	$('#WMTitle font').hover(function(){$(this).css('color','#000')},function(){$(this).css('color','#999')});
-	$('#WMContent').css({'width':'100%','height':'190px','backgroundColor':'#FFF','fontSize':'18px','paddingTop':'10%'});
+	$('#WMContent').css({'width':'100%','height':'170px','backgroundColor':'#FFF','fontSize':'18px','paddingTop':'10%'});
 	$('#WMContent p').css({'width':'95%','margin':'0px auto','textAlign':'center'});
 	$('#WMContent span').css({'width':'100%','height':'50px','position':'absolute','bottom':'0px','textAlign':'center'});
 	$('#WMContent span input').css({'width':'100px','height':'35px','position':'absolute','fontSize':'15px','fontFamily':'微软雅黑'});
