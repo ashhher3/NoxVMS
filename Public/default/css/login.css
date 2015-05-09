@@ -1,5 +1,5 @@
 html,body{margin:0px auto;height:100%;width:100%;padding:0px;font-family:"微软雅黑";overflow-x:hidden}
-html,body{background:#f9f9f9;font-family:"微软雅黑";}
+html,body{background:#F1F1F3}
 *{padding:0px;margin:0px;border-collapse:collapse}
 *:focus{outline:none}
 ul,li,p,div{padding:0px;margin:0px}
@@ -9,14 +9,16 @@ input{padding:0px;border:none;font-family:"微软雅黑"}
 .clear{clear:both}
 .clear:after{height:0px;display:block;content:".";overflow:hidden;visibility:hidden;clear:both}
 
-.Login{width:380px;height:400px;background:#FFF;margin:0px auto;margin-top:50px;box-shadow:0px 0px 2px #ccc}
-.Login .Login_Title{width:100%;height:70px;font-size:25px;color:#9ad268;}
-	   .Login_Title p{float:left;height:100%;line-height:70px;width:100%;text-align:center}
-.Login .Login_Con{width:100%;height:330px;}
-	   .Login_Con label{float:left;width:100%;height:40px;margin-left:20px;margin-top:10px;line-height:40px;color:#CCC;font-size:14px;}
-	   .Login_Con input{float:left;margin-top:10px;width:330px;height:34px;border:1px solid #eee;margin-left:20px;}
-	   .Login_Con .submit,.Login_Con .submit2{border:none;background:#0C9;height:40px;color:#FFF;cursor:pointer;width:90%;margin-left:5%;}
-	   .Login_Con .submit:hover{background:#0CC}
-	   .Login_Con .submit2{background:#ccc;display:none;}
-	   .Login_Con .text{padding:0px 5px;color:#888;width:}
-	   .Login_Con .text:focus{border-color:#0F0;color:#000}
+.Login_Top{width:100%;height:320px;background:url(../images/login/login-bg.jpg) center no-repeat;background-size: cover;border-bottom:1px solid #3b93b7}
+
+.Login{width:650px;height:400px;margin:0px auto;margin-top:-80px;}
+.Login .Login_Title{height:79px;width:100%;border-bottom:1px solid #3b93b7;opacity: 0.8;background:rgba(255, 255, 255, 0.8);line-height:80px;text-align: center;font-size:26px;}
+.Login .Login_Con{height:320px;width:100%;background:#FFF}
+       .Login_Con .span{width:500px;margin-left:75px;height:48px;border:1px solid #ccc;margin-top:30px;float:left;}
+       .Login_Con .span label{height:40px;width:60px;margin-top:4px;text-align:center;float:left;}
+       .Login_Con .span label img{height:40px;}
+       .Login_Con .span input{height:100%;width:440px;float:left;}
+       .Login_Con .sub{border:none;background:#4499BE;width:502px}
+       .Login_Con .sub input{background:none;width:100%;height:100%;color:#FFF;font-size:16px;}
+       .Login_Con .sub .submit{cursor: pointer;}
+       .Login_Con .sub .submit2{display:none;background:#007196}

@@ -9,16 +9,22 @@
         <link rel="stylesheet" type="text/css" href='__PUBLIC__/default/css/login.css' />
 	</head>
 	<body>
+        <div class="Login_Top"></div>
 		<div class='Login'>
         	<div class='Login_Title'><p>{$GLOBALS['sitename']}</p></div>
             <div class='Login_Con'>
-                <label>账号</label>
-                <input class='text' placeholder="请输入登录账号" type='text' name='username' />
-                <label>密码</label>
-                <input class='text' placeholder="请输入密码" onKeyUp="KeyDown(event)" type='password' name='password' />
-                <label></label>
-                <input class='submit' onKeyDown="login()" onClick="login()" type='button' value='登录' />
-                <input class='submit2' type='button' value='登录中···' />
+                <div class="span">
+                    <label><image src="__PUBLIC__/default/images/login/username.png" /></label>
+                    <input class='text' placeholder="请输入登录账号" type='text' name='username' />
+                </div>
+                <div class="span">
+                    <label><image src="__PUBLIC__/default/images/login/password.png" /></label>
+                    <input class='text' placeholder="请输入密码" onKeyUp="KeyDown(event)" type='password' name='password' />
+                </div>
+                <div class="span sub">
+                    <input class='submit' onKeyDown="login()" onClick="login()" type='button' value='登录' />
+                    <input class='submit2' type='button' value='登录中···' />
+                </div>
             </div>
         </div>
 	</body>

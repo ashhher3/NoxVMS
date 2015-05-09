@@ -1,12 +1,10 @@
-$(function(){
-	$('.Login').css('marginTop',($(window).height()-$('.Login').height())/2);
-})
+
 
 //登录事件
 function login()
 {
-	$('.Login .submit').hide();
-	$('.Login .submit2').show();
+	$('.Login .sub .submit').hide();
+	$('.Login .sub .submit2').show();
 	if($('[name=username]').val()!=='' && $('[name=password]').val()!=='')
 	{
 		$.post("/Login/response.html",{name:$('[name=username]').val(),pass:$('[name=password]').val()},function(data){
@@ -17,16 +15,16 @@ function login()
 			else 
 			{
 				Message("用户名或密码错误");
-				$('.Login .submit').show();
-				$('.Login .submit2').hide();
+				$('.Login .sub .submit').show();
+				$('.Login .sub .submit2').hide();
 			}
 		},'html');
 	}
 	else
 	{
 		Message("用户名或者密码不能为空");
-		$('.Login .submit').show();
-		$('.Login .submit2').hide();
+		$('.Login .sub .submit').show();
+		$('.Login .sub .submit2').hide();
 	}
 }
 
