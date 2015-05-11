@@ -21,4 +21,4 @@ input{padding:0px;border:none;font-family:"微软雅黑"}
        .Login_Con .sub{border:none;background:#4499BE;width:502px}
        .Login_Con .sub input{background:none;width:100%;height:100%;color:#FFF;font-size:16px;}
        .Login_Con .sub .submit{cursor: pointer;}
-       .Login_Con .sub .submit2{display:none;background:#007196}
+       .Login_Con .sub .submit2{display:none;background:#007196;}

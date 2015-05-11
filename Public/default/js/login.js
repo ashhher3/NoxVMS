@@ -1,4 +1,17 @@
-
+$(document).ready(function(){
+    $('.Login_Con .span .text1').focus(function(){
+        $('.Login_Con .span1').css({'box-shadow':'0px 0px 5px #4499BE'});
+    });
+    $('.Login_Con .span .text1').blur(function(){
+        $('.Login_Con .span1').css({'box-shadow':'none'});
+    });
+    $('.Login_Con .span .text2').focus(function(){
+        $('.Login_Con .span2').css({'box-shadow':'0px 0px 5px #4499BE'});
+    });
+    $('.Login_Con .span .text2').blur(function(){
+        $('.Login_Con .span2').css({'box-shadow':'none'});
+    });
+});
 
 //登录事件
 function login()
