@@ -41,6 +41,9 @@ class ProjectController extends CommonController
 		));
 		$this->display();
 	}
+
+    //pro_class
+
 	
 	//pro_action
 	public function pro_action()
