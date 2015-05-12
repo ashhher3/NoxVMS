@@ -60,7 +60,7 @@
                         <h4 class="modal-title">添加会员</h4>
                     </div>
                     <form class="form-horizontal" role="form" method="post" action="{:U('Vip/vip_action/action/add')}">
-                    <div class="modal-body">
+                    <div class="modal-body" >
                         <table class='table table-bordered'>
                         	<tr>
                             	<td width='100'><strong>会员卡编号</strong></td>
@@ -97,10 +97,21 @@
                             <tr>
                             	<td><strong>拥有产品</strong></td>
                                 <td class='addusercheckbox'>
-                                	<table class='table table-hover '>
-                                	<volist name='project' id='pv'>
-                                	<tr><td><input type="checkbox" name='project[]' value="{$pv.pid}"><label>{$pv.pname}</label></td></tr>
-                                    </volist>
+                                	<table width="100%" class='table-hover '>
+                                        <volist name="project" id="PV">
+                                	    <tr>
+                                            <td>
+                                                <div class="aucb">
+                                                    <p><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span> {$PV.cname}<input type="checkbox" /></p>
+                                                    <div class="div">
+                                                        <volist name="PV['Product']" id="PTV">
+                                                            <span><input checked="checked" name="product[]" type="checkbox" value="{$PTV.pid}" />{$PTV.pname}</span>
+                                                        </volist>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </volist>
                                     </table>
                                 </td>
                             </tr>

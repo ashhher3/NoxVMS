@@ -9,6 +9,22 @@ $(function(){
 		$(this).val('Loading...');
 		$(this).addClass('disabled');
 	});
+
+    //
+    $('.aucb').click(function(){
+        if($(this).css('height')=='30px')
+        {
+            $(this).css('height','auto')
+            $(this).find('.glyphicon').removeClass('glyphicon-chevron-right');
+            $(this).find('.glyphicon').addClass('glyphicon-chevron-down');
+        }
+        else
+        {
+            $(this).find('.glyphicon').addClass('glyphicon-chevron-right');
+            $(this).find('.glyphicon').removeClass('glyphicon-chevron-down');
+            $(this).css('height','30px')
+        }
+    });
 	
 })
 

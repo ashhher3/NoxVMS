@@ -26,6 +26,7 @@ class ProjectModel extends Model
 	{
 		$pdata['pname']=$data['pname'];
 		$pdata['pdesc']=$data['pdesc'];
+		$pdata['cid']  =$data['cid'];
 		switch($action)
 		{
 			case 'add':
@@ -52,18 +53,19 @@ class ProjectModel extends Model
 				}
 				else return false;
 			default:
+				return false;
 				break;
 		}
 	}
 	
 	/*
-	 *取列表
+	 *取项目列表
 	 *param:int $page 页数
 	 *return array
 	 */
 	public function query_pro_list($page)
 	{
-		$list=$this->page($page.',12')->select();
+		$list=$this->join("nox_class ON nox_class.cid=nox_project.cid")->page($page.',12')->select();
 		$Page= new \Think\Page($this->count(),12);
 		$Page->setConfig('prev',C('PAGE_PREV'));
 		$Page->setConfig('next',C('PAGE_NEXT'));
@@ -77,7 +79,69 @@ class ProjectModel extends Model
 	//获取所有产品
 	public function getResult()
 	{
-		return $this->select();
+        $Result=M('Class')->select();
+        foreach($Result as $k=>$v)
+        {
+            $Result[$k]['Product']=$this->where('cid='.$v['cid'])->select();
+        }
+		return $Result;
+	}
+	
+	#---------------------------------------分割线---------------------------------------
+	
+	/*操作分类*/
+	public function saveClass($data,$action)
+	{
+		$M_Class=M('Class');
+		$cdata['cname']=$data['cname'] 	? $data['cname'] : $data['pname'];
+		$cdata['cdes'] =$data['cdes'] 	? $data['cdes']  : $data['pdesc'];
+		switch($action)
+		{
+			case 'add':
+				return $M_Class->data($cdata)->add();
+				break;
+			case 'save':
+				return $M_Class->where("cid={$data['pid']}")->save($cdata);
+				break;
+			case 'delete':
+				if($this->where("cid={$data['pid']}")->find())
+				{
+					return false;
+				}
+				else
+				{
+					return $M_Class->where("cid={$data['pid']}")->delete();
+				}
+				break;
+			default:
+				return false;
+				break;
+		}
+	}
+	
+	/*
+	 *取分类列表
+	 *param:int $page 页数
+	 *return array
+	 */
+	public function query_class_list($page)
+	{
+        if($page===false)
+        {
+            return M('Class')->select();
+        }
+        else
+        {
+            $list=M('Class')->page($page.',12')->select();
+            $Page= new \Think\Page($this->count(),12);
+            $Page->setConfig('prev',C('PAGE_PREV'));
+            $Page->setConfig('next',C('PAGE_NEXT'));
+
+            return array(
+                'list'=>$list,
+                'show'=>$Page->show(),
+            );
+        }
 	}
 	
 	
