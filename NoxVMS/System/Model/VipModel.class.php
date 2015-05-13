@@ -99,6 +99,7 @@ class VipModel extends Model
 			$list=$this->where("{$condition}")->select();
 			foreach($list as $key=>$value)
 			{
+                $vproduct=json_decode($value['vproduct']);
 				$vproject=json_decode($value['vproject']);
 				$vproject_consume=json_decode($value['vproject_consume']);
 				$vproject_not_consume=json_decode($value['vproject_not_consume']);
@@ -117,6 +118,12 @@ class VipModel extends Model
 					$res=$Project->where("pid=$val2")->find();
 					$temp_vproject_not_consume.=$res['pname'].",";
 				}
+                foreach($vproduct as $val3)
+                {
+                    $res=$Project->where("pid=$val3")->find();
+                    $temp_vproduct.=$res['pname'].",";
+                }
+				$list[$key]['vproduct']=$temp_vproduct;
 				$list[$key]['vproject']=$temp_vproject;
 				$list[$key]['vproject_consume']=$temp_vproject_consume;
 				$list[$key]['vproject_not_consume']=$temp_vproject_not_consume;
