@@ -121,6 +121,7 @@ class VipController extends CommonController
 			'project'=>D('Project')->getResult(),
 			'VipInfo'=>$VipInfo['list'][0],
 			'Vip_Project'=>json_decode($VipInfo['list'][0]['vproject']),
+			'Vip_Product'=>json_decode($VipInfo['list'][0]['vproduct']),
 		));
 		$this->display();
 	}
@@ -152,12 +153,18 @@ class VipController extends CommonController
                 if(!IS_POST) break;
 				$this->ajaxReturn($VIP->showVipInfo($PostData['v_id']),'EVAL');
 				break;
-			//设置会员产品
+			//设置会员礼品
 			case 'setprosta':
                 if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$this->ajaxReturn($VIP->setProSta($PostData));
 				break;
+            //设置会员产品
+            case 'setProduct':
+                if(!IS_POST) break;
+                $this->check_level('Vip/manage');
+                $this->ajaxReturn($VIP->setProduct($PostData));
+                break;
 			//设置会员信息
 			case 'set_vip':
                 if(!IS_POST) break;

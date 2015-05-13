@@ -33,6 +33,8 @@ class VipModel extends Model
 			'vserver_owner'			=> $data['vserver_owner'],
 			'vserver_owner_number'	=> $data['vserver_owner_number'],
 			'varea_manager'			=> $data['varea_manager'],
+			'vintegral'			    => $data['integral'],
+			'vproduct'				=> json_encode($data['product']),
 			'vproject'				=> json_encode($data['project']),
 			'vproject_not_consume'	=> json_encode($data['project']),
 			'vpass'	                => EnCrypt(substr($data['vcontact_info'],-6)),
@@ -146,13 +148,13 @@ class VipModel extends Model
 		
 		if(!empty($data['vproject']))
 		{
-			//获取会员已消费产品
+			//获取会员已消费礼包
 			$vip_project_consume=$this->field('vproject_consume')->where("vid=$vid")->find();
-			//获取会员未消费产品
+			//获取会员未消费礼包
 			$vip_project_not_consume=$this->field('vproject_not_consume')->where("vid=$vid")->find();
-			//获取最终会员已消费产品
+			//获取最终会员已消费礼包
 			$vproject__consume=array_intersect(json_decode($vip_project_consume['vproject_consume']),$data['vproject']);
-			//获取最终会员未消费产品
+			//获取最终会员未消费产礼包
 			foreach($data['vproject'] as $value)
 			{
 				if(!in_array($value,$vproject__consume))
@@ -173,7 +175,8 @@ class VipModel extends Model
 		$data['vproject']=json_encode($data['vproject']);
 		$data['vproject_consume']=json_encode($vproject__consume);
 		$data['vproject_not_consume']=json_encode($new_not_consume);
-		
+		$data['vproduct']=json_encode($data['vproduct']);
+
 		return $this->where("vid=$vid")->save($data);
 	}
 
@@ -202,6 +205,7 @@ class VipModel extends Model
 		$result=$this->where("vid=$vid")->find();
 		$Project=M('Project');
 		if(session('user_level') <= session('Power.Vip/manage')) $level_sta=1;
+        //未消费
 		if(!empty($result['vproject_not_consume'])) 
 		{
 			$not_consume='';
@@ -218,6 +222,7 @@ class VipModel extends Model
 				$not_consume.='<div class="btn-group"><a href="javascrip:;" class="btn btn-sm btn-default">'.$pro_data['pname'].'</a>'.$temp_str.'</div>';
 			}
 		}
+        //已消费
 		if(!empty($result['vproject_consume'])) 
 		{
 			$_consume='';
@@ -234,6 +239,22 @@ class VipModel extends Model
 				$_consume.='<div class="btn-group"><a href="javascrip:;" class="btn btn-sm btn-default">'.$pro_data['pname'].'</a>'.$temp_str.'</div>';
 			}
 		}
+        //购买的产品
+        if(!empty($result['vproduct']))
+        {
+            $_product='';
+            $vip_product=json_decode($result['vproduct']);
+            foreach($vip_product as $value)
+            {
+                $pro_data=$Project->where("pid=$value")->find();
+                if(isset($level_sta))
+                {
+                    $temp_str='<a href="javascrip:;" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+							<ul class="dropdown-menu"><li name="deleteProduct" data-vip="'.$result['vid'].'" data-value="'.$pro_data['pid'].'"><a href="javascrip:;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除</a></li></ul>';
+                }
+                $_product.='<div class="btn-group"><a href="javascrip:;" class="btn btn-sm btn-default">'.$pro_data['pname'].'</a>'.$temp_str.'</div>';
+            }
+        }
 		return $ReStr="<tr><td width='100'><strong>会员卡编号</strong></td><td>{$result['vcard']}</td></tr>
                 <tr><td><strong>会员姓名</strong></td><td>{$result['vname']}</td></tr>
                 <tr><td><strong>出生日期</strong></td><td>".date("Y-m-d",$result['vbirth'])."</td></tr>
@@ -242,13 +263,15 @@ class VipModel extends Model
                 <tr><td><strong>服务店家</strong></td><td>{$result['vserver_owner']}</td></tr>
                 <tr><td><strong>店家联系方式</strong></td><td>{$result['vserver_owner_number']}</td></tr>
                 <tr><td><strong>区域经理</strong></td><td>{$result['varea_manager']}</td></tr>
-                <tr><td><strong>未消费产品</strong></td><td class='pro_not_consume'><b></b>{$not_consume}</td></tr>
-                <tr><td><strong>已消费产品</strong></td><td class='pro_consume'><b></b>{$_consume}</td></tr>";
+                <tr><td><strong>会员积分</strong></td><td>{$result['vintegral']}</td></tr>
+                <tr><td><strong>购买产品</strong></td><td>{$_product}</td></tr>
+                <tr><td><strong>未消费礼包</strong></td><td class='pro_not_consume'><b></b>{$not_consume}</td></tr>
+                <tr><td><strong>已消费礼包</strong></td><td class='pro_consume'><b></b>{$_consume}</td></tr>";
 	}
 	
 	
 	/*
-	 *变更用户产品状态
+	 *变更用户礼包状态
 	 *@parat:$data
 	 *@return 1|0
 	 */
@@ -330,6 +353,36 @@ class VipModel extends Model
 		}
 		return 0;
 	}
+
+    /*
+     * 删除用户购买产品
+     * */
+    public function setProduct($data)
+    {
+        $pid=$data['pid'];
+        $sta=$data['sta'];
+        $vid=$data['vid'];
+
+        switch($sta)
+        {
+            case 'delete':
+                $vipinfo=$this->where("vid=$vid")->find();
+                $product=json_decode($vipinfo['vproduct']);
+
+                foreach($product as $key=>$value) if($value==$pid) unset($product[$key]);
+                $product=array_values($product);
+
+                $Vdata['vproduct']=json_encode($product);
+
+                if($this->where("vid=$vid")->save($Vdata)) return 1;
+
+                break;
+            default:
+                break;
+        }
+
+        return 0;
+    }
 	
 	/*
 	 *获取用户生日提醒列表_带分页

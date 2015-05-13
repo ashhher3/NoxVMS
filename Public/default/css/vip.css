@@ -9,12 +9,16 @@
 
 /*vip_manage_set*/
 .vip_manage_set .hproject .col-md-10 label{margin-left:15px;margin-top:5px;}
+.vip_set_product_class{width:100%;}
+.vip_set_product_class .vspc_box{width:100%;}
+.vip_set_product_class .vspc_box p{width:100%;height:40px;line-height:40px;text-align: left}
+.vip_set_product_class .vspc_box .vspcb_box{text-align: left}
 
 /*vip_manage*/
-.addusercheckbox td .aucb{height:auto;width:100%;overflow: hidden;float:left;}
+.addusercheckbox td .aucb{width:100%;overflow: hidden;float:left;}
 .addusercheckbox td p{width:100%;height:auto;line-height:30px;cursor: pointer;float:left;}
 .addusercheckbox td p:hover{color:#09C}
 .addusercheckbox td p input{float:right;height:26px;margin-top:2px;}
-.addusercheckbox td .div{width:90%;height:30px;float:left;overflow: hidden;margin-left:5%}
+.addusercheckbox td .div{width:90%;height:auto;float:left;margin-left:5%;display: block}
 .addusercheckbox td .div span{height:30px;width:100%;float:left;}
 .addusercheckbox td .div span input{float:left;margin-right:10px;height:16px;}

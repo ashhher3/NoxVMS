@@ -10,20 +10,28 @@ $(function(){
 		$(this).addClass('disabled');
 	});
 
-    //
-    $('.aucb').click(function(){
-        if($(this).css('height')=='30px')
+    //添加用户 产品栏目 折叠
+    $('.aucb p span,.aucb p a').click(function(){
+
+        var Cobj=$(this).parent().parent();
+
+        if(Cobj.find('.div').css('display')=='block')
         {
-            $(this).css('height','auto')
-            $(this).find('.glyphicon').removeClass('glyphicon-chevron-right');
-            $(this).find('.glyphicon').addClass('glyphicon-chevron-down');
+            Cobj.find('.div').css('display','none')
+            Cobj.find('span').removeClass('glyphicon-chevron-down');
+            Cobj.find('span').addClass('glyphicon-chevron-right');
         }
         else
         {
-            $(this).find('.glyphicon').addClass('glyphicon-chevron-right');
-            $(this).find('.glyphicon').removeClass('glyphicon-chevron-down');
-            $(this).css('height','30px')
+            Cobj.find('span').addClass('glyphicon-chevron-down');
+            Cobj.find('span').removeClass('glyphicon-chevron-right');
+            Cobj.find('.div').css('display','block')
         }
+    });
+    //checkbox状态切换
+    $('.aucb p input[type=checkbox]').click(function(){
+        var AucbDiv=$(this).parent().parent().find('.div');
+        AucbDiv.find('input[type=checkbox]').prop('checked',this.checked);
     });
 	
 })
@@ -64,19 +72,38 @@ function ShowVipInfo(vid,vname,url)
 					}
 				},'html');
 			}
-			
 		});
-		//会员详细信息->将产品删除
+		//会员详细信息->将礼品删除
 		$('#UserInfo .table li[name=delete]').on('click',function(){
-			$(this).parent().parent('.btn-group').remove();
-			$.post('/Vip/vip_action/action/setprosta.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'delete'},function(data){
-				if(data==0) 
-				{
-					alert('操作失败');
-					window.location.href='/Vip/vip_manage.html';
-				}
-			});
+            if(confirm('确认删除？'))
+            {
+                $(this).parent().parent('.btn-group').remove();
+                $.post('/Vip/vip_action/action/setprosta.html', {
+                    vid: $(this).attr('data-vip'),
+                    pid: $(this).attr('data-value'),
+                    sta: 'delete'
+                }, function (data) {
+                    if (data == 0) {
+                        alert('操作失败');
+                        window.location.href = '/Vip/vip_manage.html';
+                    }
+                });
+            }
 		});
+        //会员详细信息->将购买产品删除
+        $('#UserInfo .table li[name=deleteProduct]').on('click',function(){
+            if(confirm('确认删除？'))
+            {
+                $(this).parent().parent('.btn-group').remove();
+                $.post('/Vip/vip_action/action/setProduct.html',{vid:$(this).attr('data-vip'),pid:$(this).attr('data-value'),sta:'delete'},function(data){
+                    if(data==0)
+                    {
+                        alert('操作失败');
+                        window.location.href='/Vip/vip_manage.html';
+                    }
+                });
+            }
+        });
 	},'html');
 }
 

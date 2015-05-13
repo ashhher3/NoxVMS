@@ -95,6 +95,10 @@
                                 <td><input class="form-control" name='varea_manager' placeholder="区域经理" type='text' /></td>
                             </tr>
                             <tr>
+                                <td><strong>会员积分</strong></td>
+                                <td><input class="form-control" name='integral' value="0" type='text' /></td>
+                            </tr>
+                            <tr>
                             	<td><strong>拥有产品</strong></td>
                                 <td class='addusercheckbox'>
                                 	<table width="100%" class='table-hover '>
@@ -102,7 +106,7 @@
                                 	    <tr>
                                             <td>
                                                 <div class="aucb">
-                                                    <p><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span> {$PV.cname}<input type="checkbox" /></p>
+                                                    <p><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> </span> <a href='javascript:;'>{$PV.cname}</a><input checked="checked" type="checkbox" /></p>
                                                     <div class="div">
                                                         <volist name="PV['Product']" id="PTV">
                                                             <span><input checked="checked" name="product[]" type="checkbox" value="{$PTV.pid}" />{$PTV.pname}</span>
@@ -115,7 +119,28 @@
                                     </table>
                                 </td>
                             </tr>
-                    	</table>
+                            <tr>
+                                <td><strong>增值服务</strong></td>
+                                <td class='addusercheckbox'>
+                                    <table width="100%" class='table-hover '>
+                                        <volist name="project" id="PV">
+                                            <tr>
+                                                <td>
+                                                    <div class="aucb">
+                                                        <p><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span> <a href='javascript:;'>{$PV.cname}</a><input type="checkbox" /></p>
+                                                        <div class="div" style="display: none">
+                                                            <volist name="PV['Product']" id="PTV">
+                                                                <span><input name="project[]" type="checkbox" value="{$PTV.pid}" />{$PTV.pname}</span>
+                                                            </volist>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </volist>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
