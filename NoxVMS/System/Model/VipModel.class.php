@@ -435,7 +435,7 @@ class VipModel extends Model
 		//上传文件
 		$config = array(
 			'maxSize' => 0,
-			'rootPath' => './Upload/vip/',
+			'rootPath' => __UPLOAD__."/vip/",
 			'exts' => array('xlsx'),
 			'replace'=>true,
 			'autoSub' => true,
@@ -451,8 +451,8 @@ class VipModel extends Model
 		{
 			foreach($info as $fileInfo)
 			{
-				$inputFileName="./Upload/vip/".$fileInfo['savepath'].$fileInfo['savename'];
-				$Dir_Path="./Upload/vip/".$fileInfo['savepath'];
+				$inputFileName=$config['rootPath'].$fileInfo['savepath'].$fileInfo['savename'];
+				$Dir_Path=$config['rootPath'].$fileInfo['savepath'];
 			}
 			//处理XLSX
 			import("Vendor.Excel.PHPExcel.Reader.Excel2007");
@@ -483,34 +483,46 @@ class VipModel extends Model
 				$vip_list[$j]['vserver_owner']=$vip_array[$j][5];
 				$vip_list[$j]['vserver_owner_number']=$vip_array[$j][6];
 				$vip_list[$j]['varea_manage']=$vip_array[$j][7];
-				$vip_list[$j]['vproject']=$vip_array[$j][8];
-				$vip_list[$j]['vproject_consume']=$vip_array[$j][9];
-				$vip_list[$j]['vproject_not_consume']=$vip_array[$j][10];
+				$vip_list[$j]['vproduct']=$vip_array[$j][8];
+				$vip_list[$j]['vproject']=$vip_array[$j][9];
+				$vip_list[$j]['vproject_consume']=$vip_array[$j][10];
+				$vip_list[$j]['vproject_not_consume']=$vip_array[$j][11];
+				$vip_list[$j]['vpass']=EnCrypt(substr($vip_list[$j]['vcontact_info'],-6));
 			}
 			$vip_list=array_values($vip_list);
 			foreach($vip_list as $key=>$value)
 			{
-				$vproject=explode('，',$value['vproject']);
+				$vproject=explode('、',$value['vproject']);
 				foreach($vproject as $k=>$v) 
 				{
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
 					$vproject[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject']=json_encode($vproject);
-				$vproject_consume=explode('，',$value['vproject_consume']);
+
+				$vproject_consume=explode('、',$value['vproject_consume']);
 				foreach($vproject_consume as $k=>$v) 
 				{
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
 					$vproject_consume[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject_consume']=json_encode($vproject_consume);
-				$vproject_not_consume=explode('，',$value['vproject_not_consume']);
+
+				$vproject_not_consume=explode('、',$value['vproject_not_consume']);
 				foreach($vproject_not_consume as $k=>$v) 
 				{
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
 					$vproject_not_consume[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject_not_consume']=json_encode($vproject_not_consume);
+
+                $vproduct=explode('、',$value['vproduct']);
+                foreach($vproduct as $k=>$v)
+                {
+                    $res=D('Project')->field('pid')->where("pname='{$v}'")->find();
+                    $vproduct[$k]=$res['pid'];
+                }
+                $vip_list[$key]['vproduct']=json_encode($vproduct);
 			}
 			$k=0;
 			for($i=0,$c=count($vip_list);$i<$c;$i++)

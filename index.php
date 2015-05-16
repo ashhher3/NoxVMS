@@ -38,7 +38,7 @@ define('APP_PATH','./NoxVMS/');
  * 注册模板常量-> ./Think/Library/Behavior/ContentReplaceBehavior.class.php => 
  * protected function templateContentReplace();
  */
-define('__UPLOAD__','/Upload');
+define('__UPLOAD__','./Public/Upload');
 
 # 自定义安全文件内容
 define('DIR_SECURE_CONTENT','<title>Error</title><h1>Directory Listing Denied</h1>');

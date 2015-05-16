@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-05-13 08:46:13
+-- Generation Time: 2015-05-16 08:24:36
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `nox_global` (
 --
 
 INSERT INTO `nox_global` (`gid`, `sitename`, `birth`) VALUES
-(1, '法铂丽会员管理系统', 3);
+(1, 'Nox客户管理平台', 3);
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `nox_project` (
 
 INSERT INTO `nox_project` (`pid`, `pname`, `pdesc`, `cid`) VALUES
 (4, '面膜', '', 1),
-(5, '眼霜', '', 1),
+(5, '魔盒', '', 1),
 (6, '手霜', '', 1),
 (7, '4000元面部整形代金券', '', 9),
 (8, '4000元躯体塑形代金券', '', 9),
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `nox_users` (
 --
 
 INSERT INTO `nox_users` (`uid`, `uname`, `upass`, `ulevel`, `ulogtime`) VALUES
-(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1431479992),
+(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1431743960),
 (6, 'admin', 'db1eb703b5aa7070e975737265831fe255422bba', 1, 1423618285);
 
 -- --------------------------------------------------------
@@ -118,7 +118,7 @@ INSERT INTO `nox_users` (`uid`, `uname`, `upass`, `ulevel`, `ulogtime`) VALUES
 
 CREATE TABLE IF NOT EXISTS `nox_vip` (
   `vid` int(11) NOT NULL AUTO_INCREMENT,
-  `vcard` int(30) NOT NULL COMMENT '会员卡号',
+  `vcard` varchar(30) COLLATE utf8_bin NOT NULL COMMENT '会员卡号',
   `vname` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '会员姓名',
   `vbirth` int(10) DEFAULT NULL COMMENT '出生日期',
   `vcontact_info` varchar(18) COLLATE utf8_bin DEFAULT NULL COMMENT '联系方式',
@@ -134,18 +134,14 @@ CREATE TABLE IF NOT EXISTS `nox_vip` (
   `vpass` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '查询密码',
   PRIMARY KEY (`vid`),
   UNIQUE KEY `vcard` (`vcard`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `nox_vip`
 --
 
 INSERT INTO `nox_vip` (`vid`, `vcard`, `vname`, `vbirth`, `vcontact_info`, `vcontact_address`, `vserver_owner`, `vserver_owner_number`, `varea_manager`, `vproduct`, `vproject`, `vproject_consume`, `vproject_not_consume`, `vintegral`, `vpass`) VALUES
-(1, 1021443805, '用户名', -312019200, '2147483647', '成都', '温江', 110, 'admin', NULL, '[]', 'null', '[]', 0, ''),
-(6, 1000, '用户名2', -28800, '10086', 'M78星云', '什么鬼', 110, NULL, NULL, '[]', '[]', '[]', 0, '475d063fe2c92fd29c10f6c633f63a0287219863'),
-(8, 2147483647, '斯蒂芬', 1432051200, '123123123123', '', '', 0, '', NULL, '[]', 'null', '[]', 0, '74e22fd687e82206d375a478e0a549ff7c7519d7'),
-(9, 55555, '姓名', 1431100800, '999999', '', '', 110, '', '["4","5","6"]', '["7","8","9"]', 'null', '["7","8","9"]', 10, '3badf652b896b557c7d92973169b516cc7abc073'),
-(10, 5333333, '跤不死', 1431014400, '888888888', '成都', '店家', 0, '经历', '["4","5"]', '["7"]', '[]', '["7"]', 10, '534419a090d0e7594ba044381f1d3e9c349515de');
+(11, '001', '13123', 1432137600, '13123123', '', '', 0, '', '["4","5","6"]', 'null', 'null', 'null', 0, '74e22fd687e82206d375a478e0a549ff7c7519d7');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

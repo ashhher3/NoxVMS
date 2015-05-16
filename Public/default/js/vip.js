@@ -117,13 +117,14 @@ function DeleteVip_One(vid,vname)
 //删除选中会员
 function DeleteVipCheck()
 {
-	var obj=$('.table-hover input:checked');
+	var obj=$(".table-hover input:checkbox[name='ckname']:checked") ;
 	var str='';
 	for(var i=0;i<obj.length;i++)
 	{
 		var inputObj=obj[i];
 		str+="<input type='hidden' name='vid[]' value='"+inputObj.value+"'>";
 	}
+    $('#DeleteUser_Focus form input[type=hidden]').remove();
 	$('#DeleteUser_Focus form').append(str);
 }
 

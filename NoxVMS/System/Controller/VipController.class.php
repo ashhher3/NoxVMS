@@ -46,9 +46,10 @@ class VipController extends CommonController
 				array('val'=>'【服务店家】','align'=>'center','width'=>16,'font-size'=>13),
 				array('val'=>'【店家号码】','align'=>'center','width'=>16,'font-size'=>13),
 				array('val'=>'【区域经理】','align'=>'center','width'=>16,'font-size'=>13),
-				array('val'=>'【拥有产品】','align'=>'center','width'=>16,'font-size'=>13),
-				array('val'=>'【已消费产品】','align'=>'center','width'=>18,'font-size'=>13),
-				array('val'=>'【未消费产品】','align'=>'center','width'=>18,'font-size'=>13),
+				array('val'=>'【购买产品】','align'=>'center','width'=>16,'font-size'=>13),
+				array('val'=>'【增值服务】','align'=>'center','width'=>16,'font-size'=>13),
+				array('val'=>'【已消费服务】','align'=>'center','width'=>18,'font-size'=>13),
+				array('val'=>'【未消费服务】','align'=>'center','width'=>18,'font-size'=>13),
 		);
 		$Vip=D('Vip');
 		$Result=$Vip->getVipInfo(session('condition'),0,1);
@@ -64,6 +65,7 @@ class VipController extends CommonController
 					array('val'=>''.$value['vserver_owner'].'','align'=>'center'),
 					array('val'=>''.$value['vserver_owner_number'].'','align'=>'center'),
 					array('val'=>''.$value['varea_manager'].'','align'=>'center'),
+					array('val'=>''.$value['vproduct'].'','align'=>'center'),
 					array('val'=>''.$value['vproject'].'','align'=>'center'),
 					array('val'=>''.$value['vproject_consume'].'','align'=>'center'),
 					array('val'=>''.$value['vproject_not_consume'].'','align'=>'center'),
@@ -176,7 +178,7 @@ class VipController extends CommonController
                 $this->check_level('Vip/manage');
                 echo $VIP->repass(I('get.re_vip_pass')) ? $this->success_($Manage_u) : $this->error_($Manage_u);
                 break;
-			case 'upload_file':
+			case 'Upload_file':
                 if(!IS_POST) break;
 				$this->check_level('Vip/manage');
 				$re=$VIP->Upload_File($PostData);
