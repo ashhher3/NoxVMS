@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script src="__PUBLIC__/default/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <form action="{:U('Index/action')}" method="post">
+        <br/><label>数据库地址：</label><input name="host" type="text" required="required" value="localhost" placeholder="请输入数据库服务器地址" />
+        <br/><label>数据库账户：</label><input name="user" type="text" required="required" value="root" placeholder="用户名" />
+        <br/><label>数据库密码：</label><input name="pwd" type="text" value="" placeholder="密码" />
+        <br/><label>数据库名称：</label><input name="dbname" type="text" required="required" value="" placeholder="数据库名称" /><label>如果数据库不存在将自动建立</label>
+        <br/><input onclick="Cl()" type="submit" value="安装">
+    </form>
+</body>
+<script>
+function Cl()
+{
+    var h=$('input[name=host]').val();
+    var u=$('input[name=user]').val();
+    var d=$('input[name=dbname]').val();
+    if(h && u && p && d &&p) return true;
+    alert('请把数据填写完整');
+    return false;
+}
+</script>
+</html>

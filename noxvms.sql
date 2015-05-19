@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-05-16 08:24:36
+-- Generation Time: 2015-05-19 05:56:23
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `nox_class` (
 --
 
 INSERT INTO `nox_class` (`cid`, `cname`, `cdes`) VALUES
-(1, '家具套装', '一个产品分类'),
-(9, '24000元项目代金券礼包', '赠送');
+(1, '家居套装', '一个产品分类'),
+(9, 'Vip特权', '赠送');
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `nox_global` (
 --
 
 INSERT INTO `nox_global` (`gid`, `sitename`, `birth`) VALUES
-(1, 'Nox客户管理平台', 3);
+(1, '法铂丽客户管理平台', 3);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `nox_project` (
   `pdesc` text COLLATE utf8_bin COMMENT '项目描述',
   `cid` int(11) NOT NULL COMMENT '分类ID',
   PRIMARY KEY (`pid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
 
 --
 -- 转存表中的数据 `nox_project`
@@ -82,10 +82,9 @@ CREATE TABLE IF NOT EXISTS `nox_project` (
 INSERT INTO `nox_project` (`pid`, `pname`, `pdesc`, `cid`) VALUES
 (4, '面膜', '', 1),
 (5, '魔盒', '', 1),
-(6, '手霜', '', 1),
-(7, '4000元面部整形代金券', '', 9),
-(8, '4000元躯体塑形代金券', '', 9),
-(9, '4000元微整形代金券', '', 9);
+(10, '生日贺礼', '', 9),
+(11, '专车接送（成都区域）', '', 9),
+(12, '专属健康顾问', '', 9);
 
 -- --------------------------------------------------------
 
@@ -107,8 +106,7 @@ CREATE TABLE IF NOT EXISTS `nox_users` (
 --
 
 INSERT INTO `nox_users` (`uid`, `uname`, `upass`, `ulevel`, `ulogtime`) VALUES
-(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1431743960),
-(6, 'admin', 'db1eb703b5aa7070e975737265831fe255422bba', 1, 1423618285);
+(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1431912041);
 
 -- --------------------------------------------------------
 
@@ -134,14 +132,7 @@ CREATE TABLE IF NOT EXISTS `nox_vip` (
   `vpass` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '查询密码',
   PRIMARY KEY (`vid`),
   UNIQUE KEY `vcard` (`vcard`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=15 ;
-
---
--- 转存表中的数据 `nox_vip`
---
-
-INSERT INTO `nox_vip` (`vid`, `vcard`, `vname`, `vbirth`, `vcontact_info`, `vcontact_address`, `vserver_owner`, `vserver_owner_number`, `varea_manager`, `vproduct`, `vproject`, `vproject_consume`, `vproject_not_consume`, `vintegral`, `vpass`) VALUES
-(11, '001', '13123', 1432137600, '13123123', '', '', 0, '', '["4","5","6"]', 'null', 'null', 'null', 0, '74e22fd687e82206d375a478e0a549ff7c7519d7');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

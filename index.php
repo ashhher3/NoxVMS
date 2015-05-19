@@ -13,23 +13,24 @@
 header("Content-type:text/html;charset=UTF-8");
 
 /*-----------------------------------------------------------------------------
+ * 判断是否安装
+ *-----------------------------------------------------------------------------
+ * 安装完成后将会自动删除安装文件
+ * 具体详情查看使用手册
+ */
+if(file_exists('./install.php')) 
+{
+	header("Location:install.php") ;	
+	exit;
+}
+
+/*-----------------------------------------------------------------------------
  * 判断PHP环境
  *-----------------------------------------------------------------------------
  * ThinkPHP3.2.3框架要求最低PHP版本为5.3,更换版本号请注意.
  * 具体详情访问[http://thinkphp.cn]
- */ 
-if(version_compare(PHP_VERSION,'5.3.0','<'))  die('Require PHP > 5.3.0 !');
-
-/*-----------------------------------------------------------------------------
- * 调试模式
- *-----------------------------------------------------------------------------
- * 用于项目开发调试用,部署项目时请关闭调试模式
- * define('APP_DEBUG',false);
  */
-define('APP_DEBUG',true);
-
-# 定义应用目录
-define('APP_PATH','./NoxVMS/');
+if(version_compare(PHP_VERSION,'5.3.0','<'))  die('Require PHP > 5.3.0 !');
 
 /*-----------------------------------------------------------------------------
  * 声明上传目录常量 ：__UPLOAD__
@@ -40,9 +41,14 @@ define('APP_PATH','./NoxVMS/');
  */
 define('__UPLOAD__','./Public/Upload');
 
+# 调试模式
+define('APP_DEBUG',true);
+
+# 定义应用目录
+define('APP_PATH','./NoxVMS/');
+
 # 自定义安全文件内容
 define('DIR_SECURE_CONTENT','<title>Error</title><h1>Directory Listing Denied</h1>');
- 
+
 # 加载ThinkPHP
 require './ThinkPHP/ThinkPHP.php';
-
