@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-05-19 05:56:23
+-- Generation Time: 2015-05-21 08:18:48
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `nox_class` (
 --
 
 INSERT INTO `nox_class` (`cid`, `cname`, `cdes`) VALUES
-(1, '家居套装', '一个产品分类'),
+(1, '产品分类', '一个产品分类'),
 (9, 'Vip特权', '赠送');
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `nox_global` (
 --
 
 INSERT INTO `nox_global` (`gid`, `sitename`, `birth`) VALUES
-(1, '法铂丽客户管理平台', 3);
+(1, 'Nox客户管理平台', 3);
 
 -- --------------------------------------------------------
 
@@ -80,11 +80,8 @@ CREATE TABLE IF NOT EXISTS `nox_project` (
 --
 
 INSERT INTO `nox_project` (`pid`, `pname`, `pdesc`, `cid`) VALUES
-(4, '面膜', '', 1),
-(5, '魔盒', '', 1),
-(10, '生日贺礼', '', 9),
-(11, '专车接送（成都区域）', '', 9),
-(12, '专属健康顾问', '', 9);
+(4, '产品1', '', 1),
+(10, '生日贺礼', '', 9);
 
 -- --------------------------------------------------------
 
@@ -106,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `nox_users` (
 --
 
 INSERT INTO `nox_users` (`uid`, `uname`, `upass`, `ulevel`, `ulogtime`) VALUES
-(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1431912041);
+(1, 'root', 'a5a732e5c7aacf8ab59cdf472e79f19f487f8adc', 0, 1432189051);
 
 -- --------------------------------------------------------
 
@@ -122,17 +119,23 @@ CREATE TABLE IF NOT EXISTS `nox_vip` (
   `vcontact_info` varchar(18) COLLATE utf8_bin DEFAULT NULL COMMENT '联系方式',
   `vcontact_address` text COLLATE utf8_bin COMMENT '联系地址',
   `vserver_owner` varchar(64) COLLATE utf8_bin DEFAULT NULL COMMENT '服务店家',
-  `vserver_owner_number` int(18) DEFAULT NULL COMMENT '店家号码',
-  `varea_manager` varchar(64) COLLATE utf8_bin DEFAULT NULL COMMENT '区域经理',
   `vproduct` text COLLATE utf8_bin COMMENT '购买产品',
   `vproject` text COLLATE utf8_bin COMMENT '拥有礼包',
   `vproject_consume` text COLLATE utf8_bin COMMENT '已消费礼包',
   `vproject_not_consume` text COLLATE utf8_bin COMMENT '未消费礼包',
+  `vmoney` int(9) NOT NULL DEFAULT '0' COMMENT '消费金额',
   `vintegral` int(11) NOT NULL DEFAULT '0' COMMENT '积分',
   `vpass` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '查询密码',
   PRIMARY KEY (`vid`),
   UNIQUE KEY `vcard` (`vcard`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=14 ;
+
+--
+-- 转存表中的数据 `nox_vip`
+--
+
+INSERT INTO `nox_vip` (`vid`, `vcard`, `vname`, `vbirth`, `vcontact_info`, `vcontact_address`, `vserver_owner`, `vproduct`, `vproject`, `vproject_consume`, `vproject_not_consume`, `vmoney`, `vintegral`, `vpass`) VALUES
+(12, '1000', 'sdasd', 1431532800, '123123', '', '', '["4","5"]', '["10"]', 'null', '["10"]', 200, 10, '74e22fd687e82206d375a478e0a549ff7c7519d7');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

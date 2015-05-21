@@ -31,9 +31,8 @@ class VipModel extends Model
 			'vcontact_info'			=> $data['vcontact_info'],
 			'vcontact_address'		=> $data['vcontact_address'],
 			'vserver_owner'			=> $data['vserver_owner'],
-			'vserver_owner_number'	=> $data['vserver_owner_number'],
-			'varea_manager'			=> $data['varea_manager'],
 			'vintegral'			    => $data['integral'],
+			'vmoney'			    => $data['vmoney'],
 			'vproduct'				=> json_encode($data['product']),
 			'vproject'				=> json_encode($data['project']),
 			'vproject_not_consume'	=> json_encode($data['project']),
@@ -86,11 +85,9 @@ class VipModel extends Model
 		$data['vbirth'] && $condition.=" and vbirth={$vip_birth_day}";
 		$data['vproject'] && $condition.=" and vproject='{$data['vproject']}'";
 		$data['vcontact_info'] && $condition.=" and vcontact_info={$data['vcontact_info']}";
-		$data['varea_manager'] && $condition.=" and varea_manager='{$data['varea_manager']}'";
 		$data['vserver_owner'] && $condition.=" and vserver_owner='{$data['vserver_owner']}'";
 		$data['vcontact_address'] && $condition.=" and vcontact_address='{$data['vcontact_address']}'";
 		$data['vproject_consume'] && $condition.=" and vproject_consume='{$data['vproject_consume']}'";
-		$data['vserver_owner_number'] && $condition.=" and vserver_owner_number={$data['vserver_owner_number']}";
 		$data['vproject_not_consume'] && $condition.=" and vproject_not_consume='{$data['vproject_not_consume']}'";
 
 		if($tot==1)
@@ -268,9 +265,8 @@ class VipModel extends Model
                 <tr><td><strong>联系方式</strong></td><td>{$result['vcontact_info']}</td></tr>
                 <tr><td><strong>联系地址</strong></td><td>{$result['vcontact_address']}</td></tr>
                 <tr><td><strong>服务店家</strong></td><td>{$result['vserver_owner']}</td></tr>
-                <tr><td><strong>店家联系方式</strong></td><td>{$result['vserver_owner_number']}</td></tr>
-                <tr><td><strong>区域经理</strong></td><td>{$result['varea_manager']}</td></tr>
                 <tr><td><strong>会员积分</strong></td><td>{$result['vintegral']}</td></tr>
+                <tr><td><strong>消费金额</strong></td><td>{$result['vmoney']}</td></tr>
                 <tr><td><strong>购买产品</strong></td><td>{$_product}</td></tr>
                 <tr><td><strong>未消费礼包</strong></td><td class='pro_not_consume'><b></b>{$not_consume}</td></tr>
                 <tr><td><strong>已消费礼包</strong></td><td class='pro_consume'><b></b>{$_consume}</td></tr>";
@@ -481,8 +477,8 @@ class VipModel extends Model
 				$vip_list[$j]['vcontact_info']=$vip_array[$j][3];
 				$vip_list[$j]['vcontact_address']=$vip_array[$j][4];
 				$vip_list[$j]['vserver_owner']=$vip_array[$j][5];
-				$vip_list[$j]['vserver_owner_number']=$vip_array[$j][6];
-				$vip_list[$j]['varea_manage']=$vip_array[$j][7];
+				$vip_list[$j]['vintegral']=$vip_array[$j][6];
+				$vip_list[$j]['vmoney']=$vip_array[$j][7];
 				$vip_list[$j]['vproduct']=$vip_array[$j][8];
 				$vip_list[$j]['vproject']=$vip_array[$j][9];
 				$vip_list[$j]['vproject_consume']=$vip_array[$j][10];
