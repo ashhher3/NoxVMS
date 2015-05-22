@@ -80,7 +80,7 @@ class VipModel extends Model
 		$vip_birth_day=strtotime($data['vbirth']);
 		//筛选条件拼接
 		$data['vid'] && $condition.=" and vid={$data['vid']}";
-		$data['vcard'] && $condition.=" and vcard={$data['vcard']}";
+		$data['vcard'] && $condition.=" and vcard='{$data['vcard']}'";
 		$data['vname'] && $condition.=" and vname like '%{$data['vname']}%'";
 		$data['vbirth'] && $condition.=" and vbirth={$vip_birth_day}";
 		$data['vproject'] && $condition.=" and vproject='{$data['vproject']}'";

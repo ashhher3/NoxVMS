@@ -37,7 +37,6 @@ class VipController extends CommonController
 			array('val'=>'法铂丽红卡会员','align'=>'center','font-size'=>22,'colspan'=>12),
 		);
 		$arr[] = array(
-				array('val'=>'【ID】','align'=>'center','font-size'=>13),
 				array('val'=>'【会员卡号】','align'=>'center','width'=>16,'font-size'=>13),
 				array('val'=>'【会员姓名】','align'=>'center','width'=>16,'font-size'=>13),
 				array('val'=>'【出生日期】','align'=>'center','width'=>16,'font-size'=>13),
@@ -56,7 +55,6 @@ class VipController extends CommonController
 		foreach($Result as $value)
 		{
 			$arr[] = array(
-					array('val'=>''.$value['vid'].'','align'=>'center'),
 					array('val'=>''.$value['vcard'].'','align'=>'center'),
 					array('val'=>''.$value['vname'].'','align'=>'center'),
 					array('val'=>''.date("Y-m-d",$value['vbirth']).'','align'=>'center'),
