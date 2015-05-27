@@ -488,42 +488,62 @@ class VipModel extends Model
 			$vip_list=array_values($vip_list);
 			foreach($vip_list as $key=>$value)
 			{
-				$vproject=explode('、',$value['vproject']);
+				$vproject=array_filter(explode(',',$value['vproject']));
 				foreach($vproject as $k=>$v) 
 				{
+					if($v=='') 
+					{
+						unset($vproject[$k]); 
+						continue; 
+					}
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
-					$vproject[$k]=$res['pid'];
+					if($res['pid']==true && $res['pid']!=='') $vproject[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject']=json_encode($vproject);
 
-				$vproject_consume=explode('、',$value['vproject_consume']);
+				$vproject_consume=array_filter(explode(',',$value['vproject_consume']));
 				foreach($vproject_consume as $k=>$v) 
 				{
+					if($v=='') 
+					{
+						unset($vproject_consume[$k]); 
+						continue; 
+					}
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
-					$vproject_consume[$k]=$res['pid'];
+					if($res['pid']==true && $res['pid']!=='') $vproject_consume[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject_consume']=json_encode($vproject_consume);
 
-				$vproject_not_consume=explode('、',$value['vproject_not_consume']);
+				$vproject_not_consume=array_filter(explode(',',$value['vproject_not_consume']));
 				foreach($vproject_not_consume as $k=>$v) 
 				{
+					if($v=='') 
+					{
+						unset($vproject_not_consumesss[$k]); 
+						continue; 
+					}
 					$res=D('Project')->field('pid')->where("pname='{$v}'")->find();
-					$vproject_not_consume[$k]=$res['pid'];
+					if($res['pid']==true && $res['pid']!=='') $vproject_not_consume[$k]=$res['pid'];
 				}
 				$vip_list[$key]['vproject_not_consume']=json_encode($vproject_not_consume);
 
-                $vproduct=explode('、',$value['vproduct']);
+                $vproduct=array_filter(explode(',',$value['vproduct']));
                 foreach($vproduct as $k=>$v)
                 {
+					if($v=='') 
+					{
+						unset($vproduct[$k]); 
+						continue; 
+					}
                     $res=D('Project')->field('pid')->where("pname='{$v}'")->find();
-                    $vproduct[$k]=$res['pid'];
+                    if($res['pid']==true && $res['pid']!=='') $vproduct[$k]=$res['pid'];
                 }
                 $vip_list[$key]['vproduct']=json_encode($vproduct);
 			}
 			$k=0;
 			for($i=0,$c=count($vip_list);$i<$c;$i++)
 			{
-				if($this->where("vcard={$vip_list[$i]['vcard']}")->find()) continue;
+				if($this->where("vcard='{$vip_list[$i]['vcard']}'")->find()) continue;
 				$this->data($vip_list[$i])->add() && $k++;
 			}
 			unlink($inputFileName);
