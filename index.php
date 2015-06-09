@@ -18,7 +18,7 @@ header("Content-type:text/html;charset=UTF-8");
  * 安装完成后将会自动删除安装文件
  * 具体详情查看使用手册
  */
-if(file_exists('./install.php'))  header("Location:install.php") ;	exit;
+if(file_exists('./install.php')) { header("Location:install.php") ;	exit; }  
 
 /*-----------------------------------------------------------------------------
  * 判断PHP环境
